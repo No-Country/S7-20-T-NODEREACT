@@ -2,7 +2,7 @@ import mongoose  from 'mongoose';
 
 export const dbConnection = async () => {
   try {
-    await mongoose.connect('mongodb+srv://neobyte:xwXOmSXI4diBrfV9@myclustercoffe.5qgreoj.mongodb.net/cafeDB');
+    await mongoose.connect(process.env.MONGODB_CNN!);
 
     console.log('Database online');
   } catch (error) {
