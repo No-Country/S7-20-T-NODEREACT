@@ -1,11 +1,11 @@
 import dotenv from 'dotenv';
+
 import {Server}from './models/server'
-import db from './config/mongo'
+
 
 dotenv.config()
 
-const server:any = new Server();
+const server:Server = new Server();
 
-db().then(()=> console.log('connected DB mongo'))
 
 server.listen()

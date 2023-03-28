@@ -1,6 +1,7 @@
 import express, {Express} from 'express';
 import cors from 'cors'
 import { router } from '../routes/user.routes'
+import { dbConnection } from '../config/mongo';
 
 export class Server {
   app: Express;
@@ -10,16 +11,23 @@ export class Server {
   constructor() {
 
     this.app = express();
-    
     this.port = process.env.PORT || 8080;
 
+    
     //* Base Route
     this.usersPath = '/api/v1';
+
+    this.connectDB();
 
     this.middlewares();
 
     this.routes();
   }
+
+  async connectDB() {
+    await dbConnection();
+  }
+
 
    middlewares() {
     this.app.use(cors());
@@ -36,5 +44,7 @@ export class Server {
       console.log('Server running in port: ', this.port);
     });
   }
+
+
 }
 

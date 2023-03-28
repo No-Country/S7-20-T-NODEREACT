@@ -1,22 +1,12 @@
-import "dotenv/config"
-import {connect} from "mongoose"
+import mongoose  from 'mongoose';
 
+export const dbConnection = async () => {
+  try {
+    await mongoose.connect('mongodb+srv://neobyte:xwXOmSXI4diBrfV9@myclustercoffe.5qgreoj.mongodb.net/cafeDB');
 
-async function dbConnect(): Promise<void> {
-    const DB_URL = <string>process.env.DATABASE_URL;
-    await connect(DB_URL)
-}
-
-export default dbConnect
-
-/*
-async function connectDb(): Promise<void> {
-    const db = await mongoose.connect(`${process.env.DATABASE_URL}`, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-});
-    console.log('database is connected to', db.connection.db.databaseName)
-}
-
-export default connectDb()
-*/
+    console.log('Database online');
+  } catch (error) {
+    console.log(error);
+    throw new Error('Error at database startup');
+  }
+};
