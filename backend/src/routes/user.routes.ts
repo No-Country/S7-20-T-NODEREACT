@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 
-export const router = Router()
+const router = Router()
 
 router.get('/', (req: Request, res: Response) => {
   res.status(200).json({
@@ -13,3 +13,5 @@ router.get('/ok', (req: Request, res: Response) => {
     msg: 'pruebas de nodemon'
   })
 })
+
+export {router}

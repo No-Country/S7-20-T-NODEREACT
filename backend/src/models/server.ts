@@ -14,7 +14,7 @@ export class Server {
     this.port = process.env.PORT || 8080;
 
     //* Base Route
-    this.usersPath = '/apiV1';
+    this.usersPath = '/api/v1';
 
     this.middlewares();
 
