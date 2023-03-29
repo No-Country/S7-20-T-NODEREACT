@@ -24,6 +24,7 @@ export class Server {
     this.routes();
   }
 
+  //* Database Connection
   async connectDB() {
     await dbConnection();
   }

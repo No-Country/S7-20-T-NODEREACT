@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-
+import { getAllUsers, getUserByEmail } from '../http/users.http'
 const router = Router()
 
 router.get('/', (req: Request, res: Response) => {
@@ -8,10 +8,6 @@ router.get('/', (req: Request, res: Response) => {
   })
 })
 
-router.get('/ok', (req: Request, res: Response) => {
-  res.status(200).json({
-    msg: 'pruebas de nodemon'
-  })
-})
-
+router.get('/users/me', getUserByEmail)
+router.get('/users', getAllUsers)
 export {router}
