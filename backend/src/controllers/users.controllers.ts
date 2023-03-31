@@ -1,5 +1,5 @@
-import User from '../controllers/users'
-import {Request, Response} from 'express'
+import User from '../models/users.model'
+import { Request, Response } from 'express'
 
 async function executeQuerys() {
     const newUser = new User({
@@ -20,15 +20,15 @@ const usersArray = [{
     password: '123456789'
 }, {
     firstName: 'Joshep',
-        lastName: 'Doe',
-        email: 'fix008@gmail.com',
-        password: '123456789'
-    },
-    {
-        firstName: 'Wick',
-        lastName: 'Doe',
-        email: 'bix99@gmail.com',
-        password: '123456789'
+    lastName: 'Doe',
+    email: 'fix008@gmail.com',
+    password: '123456789'
+},
+{
+    firstName: 'Wick',
+    lastName: 'Doe',
+    email: 'bix99@gmail.com',
+    password: '123456789'
 }]
 export async function getUserByEmail(req: Request, res: Response) {
     await User.deleteMany();
@@ -56,14 +56,5 @@ export async function deleteUser(req: Request, res: Response) {
     const deleteUser = await User.findOneAndDelete({ email: "" })
     res.status(200).json(deleteUser)
 }
-/*
 
-async function getUserByEmail(req: Request, res: Response) {
-    const getUser = await User.findOne({email: ""}, { firstName: 1, _id: 0 })
-}
-
-async function updateUser(req: Request, res: Response) {
-    const getUser = await User.findOneAndUpdate({ email: "" }, { firstName: "" }, { new: true})
-}
-*/
 

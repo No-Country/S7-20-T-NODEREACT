@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { getAllUsers, getUserByEmail } from '../http/users.http'
+import { getAllUsers, getUserByEmail } from '../controllers/users.controllers'
 const router = Router()
 
 router.get('/', (req: Request, res: Response) => {
