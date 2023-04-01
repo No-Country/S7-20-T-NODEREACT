@@ -1,9 +1,18 @@
+import styled from 'styled-components'
+import { ChatsContainer } from './components/ChatsContainer/ChatsContainer'
+
+const Container = styled.main`
+  height: 100dvh;
+  background-color: white;
+`
+
 const ChatPage = (): JSX.Element => {
   return (
-    <main>
-      chat page
-    </main>
+    <Container>
+      <ChatsContainer />
+    </Container>
   )
 }
 
 export { ChatPage }
+
