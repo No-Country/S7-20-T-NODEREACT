@@ -1,7 +1,7 @@
 export interface Message {
-  id:number
+  id: number
   userId: string
-  text?:string
-  image?:string
-  date:Date
+  text?: string
+  image?: string
+  date: Date
 }

@@ -24,7 +24,6 @@ const MessageData = styled.div<{ isSent: boolean }>`
   background-color: ${props => props.isSent ? '#F0673C' : '#C1C1C1'};
   margin-right: ${props => props.isSent ? 'unset' : 'auto'};
   margin-left: ${props => props.isSent ? 'auto' : 'unset'};
-
 `
 const Text = styled.p<{ isSent: boolean }>`
   color: ${props => props.isSent ? '#FFFFFF' : '#4B4B4B'};
@@ -57,20 +56,20 @@ interface Props {
   message: Message
 }
 
-const ChatMessage: React.FC<Props> = ({message}): JSX.Element => {
-  const {userId, text, image, date} = message
-  const formatedDate = date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+const ChatMessage: React.FC<Props> = ({ message }): JSX.Element => {
+  const { userId, text, image, date } = message
+  const formatedDate = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   const isSent = userId === '1'
 
   return (
     <MessageContainer isSent={isSent}>
       <MessageTail isSent={isSent} />
-      <MessageData isSent={isSent} >
-      {image && <Image src={image} alt='' />}
-      <Text isSent={isSent}>{text}</Text>
-      <Date>{formatedDate}</Date>
+      <MessageData isSent={isSent}>
+        {image !== undefined && <Image src={image} alt='' />}
+        <Text isSent={isSent}>{text}</Text>
+        <Date>{formatedDate}</Date>
       </MessageData>
     </MessageContainer>
   )
 }
-export { ChatMessage}
+export { ChatMessage }
