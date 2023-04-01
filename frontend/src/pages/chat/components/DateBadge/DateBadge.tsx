@@ -1,15 +1,4 @@
-import styled from "styled-components"
-
-const DateBadge = () : JSX.Element => {
-  const date = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long' })
-
-  return (
-    <BadgeContainer>
-      <p>{date}</p>
-    </BadgeContainer>
-  )
-}
-export {DateBadge}
+import styled from 'styled-components'
 
 const BadgeContainer = styled.div`
   background: rgb(127, 127, 127);
@@ -24,7 +13,7 @@ const BadgeContainer = styled.div`
   right: 0; 
   margin-left: auto; 
   margin-right: auto; 
-  top: 34px;
+  top: calc(70px + 45px);
   justify-content: center;
   > p {
     margin:0;
@@ -33,3 +22,14 @@ const BadgeContainer = styled.div`
     color: #FFFFFF;
   }
 `
+
+const DateBadge = (): JSX.Element => {
+  const date = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long' })
+
+  return (
+    <BadgeContainer>
+      <p>{date}</p>
+    </BadgeContainer>
+  )
+}
+export { DateBadge }

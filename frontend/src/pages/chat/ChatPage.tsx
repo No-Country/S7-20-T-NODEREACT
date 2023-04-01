@@ -15,4 +15,3 @@ const ChatPage = (): JSX.Element => {
 }
 
 export { ChatPage }
-
