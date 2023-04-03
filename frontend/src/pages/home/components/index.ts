@@ -1,3 +1,5 @@
+export * from './chat/WidgetNewMessage'
+export * from './chat/Chat'
+export * from './chat/ProfileImage'
+export * from './icons/IconAddComment'
 export * from './nav/Nav'
-export * from './user/UserAvatar'
-export * from './user/UserChat'
