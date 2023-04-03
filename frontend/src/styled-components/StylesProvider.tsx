@@ -10,6 +10,8 @@ const StylesProvider = createGlobalStyle`
     // BACKGROUNDS
     --background-one: #FFFFFF;
     --background-two: #4B4B4B;
+    // COMPONENTS
+    --i-component-one: #FFFFFF;
     // TYPOGRAPHY
     --family-one: 'Roboto', sans-serif;
   }
