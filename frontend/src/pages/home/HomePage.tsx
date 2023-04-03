@@ -1,7 +1,9 @@
+import { Nav } from '@/pages/home/components'
+
 const HomePage = (): JSX.Element => {
   return (
     <main>
-      home page
+      <Nav />
     </main>
   )
 }
