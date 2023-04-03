@@ -9,11 +9,11 @@ const BadgeContainer = styled.div`
   position: absolute;
   width: fit-content;
   height: 22px;
-  left: 0; 
+  left: 0;
   right: 0; 
   margin-left: auto; 
   margin-right: auto; 
-  top: calc(70px + 45px);
+  top: calc(70.5px + 0.7rem);
   justify-content: center;
   > p {
     margin:0;

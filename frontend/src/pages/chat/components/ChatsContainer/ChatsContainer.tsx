@@ -39,9 +39,9 @@ const data = [
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 3rem 0;
+  padding: 1.5rem 0;
   min-height: 100%;
-  margin-top:80px;
+  margin-top: 70.5px;
   gap: 0.5rem;
 `
 
