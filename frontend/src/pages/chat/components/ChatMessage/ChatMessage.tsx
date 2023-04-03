@@ -6,11 +6,11 @@ const MessageContainer = styled.div<{ isSent: boolean }>`
   flex-direction: ${props => props.isSent ? 'row-reverse' : 'row'};
 `
 const MessageTail = styled.div<{ isSent: boolean }>`
-    width: 0;
-    height: 0;
-    border-right: ${props => props.isSent ? '0px solid transparent' : '15px solid #C1C1C1'};
-    border-left: ${props => props.isSent ? '15px solid #F0673C' : '0px solid transparent'};
-    border-bottom: 15px solid transparent;
+  width: 0;
+  height: 0;
+  border-right: ${props => props.isSent ? '0px solid transparent' : '15px solid #C1C1C1'};
+  border-left: ${props => props.isSent ? '15px solid #F0673C' : '0px solid transparent'};
+  border-bottom: 15px solid transparent;
 `
 const MessageData = styled.div<{ isSent: boolean }>`
   display: flex;
