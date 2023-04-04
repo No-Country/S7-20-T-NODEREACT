@@ -4,7 +4,7 @@ import { Header } from './components/Header/Header'
 
 const Container = styled.main`
   height: 100dvh;
-  background-color: white;
+  background-color: #281828;
 `
 
 const ChatPage = (): JSX.Element => {

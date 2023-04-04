@@ -1,23 +1,24 @@
-import { IconArrowBack } from '@/components/icons/IconArrowBack'
-import { IconMoreVert } from '@/components/icons/IconMoreVert'
+import { IconArrowBack, IconMoreVert } from '@/components'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledHeader = styled.header`
+  position: fixed;
+  top:0;
+  width:100%;
+  z-index: 1;
   display: flex;
+  flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  width: 100%;
-  height: 70.5px;
-  left: 0px;
-  top: 0px;
-  background: #4B4B4B;
-  color: #C1C1C1;
-  z-index:1;
-`
-
-const WrapperLeftItems = styled.div`
-  display: flex;
+  border-bottom: clamp(0.125rem, 0.125vw, 0.25rem) solid #281828;
+  background-color: #c9dbdb;
+  padding: clamp(1rem, 1vw, 2rem);
+  
+  svg {
+    width: clamp(2rem, 2vw, 4rem) ;
+    height: clamp(2rem, 2vw, 4rem) ;
+  }
 `
 
 const WrapperUserInfo = styled.div`
@@ -30,18 +31,20 @@ const WrapperUserInfo = styled.div`
 
 const UserName = styled.p`
   margin:0;
+  font-style: normal;
   font-weight: 700;
   font-size: 16px;
-  line-height: 19px;
-  color: #C1C1C1;
+  line-height: 150%;
+  color: #281828;
 `
 
 const UserStatus = styled.p`
   margin:0;
+  font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  color: #7F7F7F;
+  font-size: 12px;
+  line-height: 150%;
+  color: #8A89D1;
 `
 
 const WrapperUserData = styled.div`
@@ -50,29 +53,26 @@ const WrapperUserData = styled.div`
 `
 
 const UserAvatarPlaceholder = styled.div<{ userAvatar: string }>`
-  width: 40px;
-  height: 40px;
+  width: clamp(2.5rem, 1vw, 4.5rem) ;
+  height: clamp(2.63rem, 1vw, 4.63rem) ;
+  margin-left: 16px;
   background-color: #7F7F7F;
   border-radius: 4px;
   background-image: ${props => props.userAvatar.length >= 1 ? `url(${props.userAvatar})` : ''};
-  background-size: contain;
+  background-size: cover;
+  background-position: center center;
+  outline: clamp(0.125rem, 0.125vw, 0.25rem) solid #281828;
+  box-shadow: clamp(0.375rem, 0.375vw, 0.75rem) clamp(0.375rem, 0.375vw, 0.75rem) 0 #6d6bc5;
+  border-radius: clamp(0.25rem, 0.25vw, 0.5rem);
 `
 
 const UserStatusInAvatar = styled.div`
   width: 8px;
   height: 8px;
-  background: #F0673C;
+  background: #57AC81;
   margin-left: auto;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
-`
-
-const WrapperIconArrowBack = styled.div`
-  padding: 23px 16px;
-`
-
-const WrapperIconMoreVert = styled.div`
-  padding: 13px 16px 33px;
 `
 
 const Header = (): JSX.Element => {
@@ -82,23 +82,19 @@ const Header = (): JSX.Element => {
 
   return (
     <StyledHeader>
-      <WrapperLeftItems>
-        <WrapperIconArrowBack>
+      <WrapperUserData>
+        <NavLink to='/'>
           <IconArrowBack />
-        </WrapperIconArrowBack>
-        <WrapperUserData>
-          <UserAvatarPlaceholder userAvatar={userAvatar}>
-            {userIsOnline && <UserStatusInAvatar />}
-          </UserAvatarPlaceholder>
-          <WrapperUserInfo>
-            <UserName>{userName}</UserName>
-            {userIsWritting && <UserStatus>escribiendo...</UserStatus>}
-          </WrapperUserInfo>
-        </WrapperUserData>
-      </WrapperLeftItems>
-      <WrapperIconMoreVert>
-        <IconMoreVert />
-      </WrapperIconMoreVert>
+        </NavLink>
+        <UserAvatarPlaceholder userAvatar={userAvatar}>
+          {userIsOnline && <UserStatusInAvatar />}
+        </UserAvatarPlaceholder>
+        <WrapperUserInfo>
+          <UserName>{userName}</UserName>
+          {userIsWritting && <UserStatus>escribiendo...</UserStatus>}
+        </WrapperUserInfo>
+      </WrapperUserData>
+      <IconMoreVert />
     </StyledHeader>
   )
 }

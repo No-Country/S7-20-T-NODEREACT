@@ -1,35 +1,47 @@
 import styled from 'styled-components'
 
-const BadgeContainer = styled.div`
-  background: rgb(127, 127, 127);
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0  0 clamp(1rem, 1vw, 2rem) 0;
+`
+
+const Badge = styled.div`
+  background: #8A89D1;
+  border: 2px solid #4D4C8C;
   border-radius: 4px;
   display: flex;
   align-items: center;
   padding: 4px 8px;
-  position: absolute;
-  width: fit-content;
-  height: 22px;
-  left: 0;
-  right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
-  top: calc(70.5px + 0.7rem);
-  justify-content: center;
+  min-width: fit-content;
+  height: 26px;
+  margin: 0 0.5rem;
+
   > p {
     margin:0;
     font-size: 12px;
+    font-size: clamp(12px, 2vw, 14px);
     line-height: 14px;
     color: #FFFFFF;
   }
+`
+
+export const Line = styled.div`
+  border-top: 1px dashed #8A89D1;
+  width:100%;
 `
 
 const DateBadge = (): JSX.Element => {
   const date = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long' })
 
   return (
-    <BadgeContainer>
-      <p>{date}</p>
-    </BadgeContainer>
+    <Container>
+      <Line />
+      <Badge>
+        <p>{date}</p>
+      </Badge>
+      <Line />
+    </Container>
   )
 }
 export { DateBadge }
