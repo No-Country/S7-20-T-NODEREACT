@@ -20,4 +20,9 @@ export const attributes = css`
       box-shadow: none;
     }
   }
+  [data-bx] {
+    border-radius: clamp(0.25rem, 0.25vw, 0.5rem);
+    box-shadow: clamp(0.375rem, 0.375vw, 0.75rem) clamp(0.375rem, 0.375vw, 0.75rem) 0 #6d6bc5;
+    outline: clamp(0.125rem, 0.125vw, 0.25rem) solid #281828;
+  }
 `

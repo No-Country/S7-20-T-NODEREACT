@@ -1,5 +1,7 @@
 import { IconLogoBox, IconLogoChat } from '@/components'
-import { IconMenu, IconSearch } from '@/pages/home/components'
+import { useOverlay } from '@/hooks'
+import { IconMenu, IconSearch, Menu } from '@/pages/home/components'
+import { Overlay } from '@/styled-components/components'
 import styled from 'styled-components'
 
 const HeaderStyled = styled('header')`
@@ -34,9 +36,14 @@ const WrapperIconSearch = styled('button')`
 `
 
 const Header = (): JSX.Element => {
+  const { state, closeOverlay, showOverlay } = useOverlay()
+
   return (
     <HeaderStyled>
-      <WrapperIconMenu title='Icono del menu de navegacion'><IconMenu /></WrapperIconMenu>
+      <Overlay onClick={closeOverlay} isActive={state}>
+        <Menu show={state} />
+      </Overlay>
+      <WrapperIconMenu onClick={showOverlay} title='Icono del menu de navegacion'><IconMenu /></WrapperIconMenu>
       <WrapperIconLogo>
         <IconLogoChat />
         <IconLogoBox />
