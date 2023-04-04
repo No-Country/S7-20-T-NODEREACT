@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { ChatMessage } from '../ChatMessage/ChatMessage'
-import { DateBadge } from '../DateBadge/DateBadge'
+import { ChatMessage, DateBadge } from '@/pages/chat/components'
 
 const data = [
   {

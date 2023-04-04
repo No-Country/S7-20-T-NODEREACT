@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { ChatsContainer } from './components/ChatsContainer/ChatsContainer'
-import { Header } from './components/Header/Header'
+import { ChatsContainer, Header } from '@/pages/chat/components'
 
 const Container = styled.main`
   height: 100dvh;
