@@ -39,10 +39,10 @@ const data = [
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 0;
   min-height: 100%;
-  margin-top: 70.5px;
+  margin-top: 20.5px;
   gap: 0.5rem;
+  padding: 0 clamp(1rem, 1vw, 2rem);
 `
 
 const ChatsContainer = (): JSX.Element => {
