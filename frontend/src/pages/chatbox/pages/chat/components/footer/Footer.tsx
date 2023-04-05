@@ -1,5 +1,5 @@
+import { IconAddReaction, IconAttachFileAdd } from '@/pages/chatbox/pages/chat/components'
 import styled from 'styled-components'
-import { IconAddReaction, IconAttachFileAdd } from '@/pages/chat/components'
 
 const StyledFooter = styled.footer`
   position: fixed;

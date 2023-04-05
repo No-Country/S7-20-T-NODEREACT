@@ -1,6 +1,6 @@
 import { IconLogoBox, IconLogoChat } from '@/components'
 import { useOverlay } from '@/hooks'
-import { IconMenu, IconSearch, Menu } from '@/pages/home/components'
+import { IconMenu, IconSearch, Menu } from '@/pages/chatbox/pages/home/components'
 import { Overlay } from '@/styled-components/components'
 import styled from 'styled-components'
 

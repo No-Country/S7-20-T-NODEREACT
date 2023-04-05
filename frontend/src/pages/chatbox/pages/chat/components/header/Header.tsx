@@ -1,6 +1,6 @@
+import { IconArrowBack, IconMoreVert } from '@/pages/chatbox/pages/chat/components'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { IconArrowBack, IconMoreVert } from '@/pages/chat/components'
 
 const StyledHeader = styled.header`
   position: fixed;

@@ -1,4 +1,4 @@
-import { MenuNav, MenuUser } from '@/pages/home/components'
+import { MenuNav, MenuUser } from '@/pages/chatbox/pages/home/components'
 import styled, { css } from 'styled-components'
 
 const MenuStyled = styled('aside')<{ show: boolean }>`

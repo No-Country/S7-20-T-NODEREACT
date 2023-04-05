@@ -1,4 +1,4 @@
-import { IconAddComment } from '@/pages/home/components'
+import { IconAddComment } from '@/pages/chatbox/pages/home/components'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 

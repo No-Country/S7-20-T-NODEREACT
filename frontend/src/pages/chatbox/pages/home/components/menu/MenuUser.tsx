@@ -1,4 +1,4 @@
-import { IconQrCode } from '@/pages/home/components'
+import { IconQrCode } from '@/pages/chatbox/pages/home/components'
 import styled from 'styled-components'
 
 const MenuUserStyled = styled('section')`
