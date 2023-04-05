@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { ChatMessage } from '../ChatMessage/ChatMessage'
-import { DateBadge } from '../DateBadge/DateBadge'
+import { ChatMessage, DateBadge } from '@/pages/chat/components'
 
 const data = [
   {
@@ -39,10 +38,10 @@ const data = [
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 2rem clamp(0.3rem, 1vw, 2rem) 6rem clamp(0.3rem, 1vw, 2rem);
   min-height: 100%;
-  margin-top: 20.5px;
   gap: 0.5rem;
-  padding: 0 clamp(1rem, 1vw, 2rem);
+  background-color: #281828;
 `
 
 const ChatsContainer = (): JSX.Element => {

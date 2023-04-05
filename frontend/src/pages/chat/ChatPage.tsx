@@ -1,10 +1,8 @@
 import styled from 'styled-components'
-import { ChatsContainer } from './components/ChatsContainer/ChatsContainer'
-import { Header } from './components/Header/Header'
+import { ChatsContainer, Footer, Header } from '@/pages/chat/components'
 
 const Container = styled.main`
   height: 100dvh;
-  background-color: #281828;
 `
 
 const ChatPage = (): JSX.Element => {
@@ -12,6 +10,7 @@ const ChatPage = (): JSX.Element => {
     <Container>
       <Header />
       <ChatsContainer />
+      <Footer />
     </Container>
   )
 }
