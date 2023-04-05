@@ -1,4 +1,4 @@
-import { Chats, Header, Nav, WidgetNewMessage } from '@/pages/chatbox/pages/home/components'
+import { Chats, Header, Tabs, WidgetNewMessage } from '@/pages/chatbox/pages/home/components'
 import styled from 'styled-components'
 
 const ChatboxHomePageStyled = styled('div')`
@@ -16,7 +16,7 @@ const ChatboxHomePage = (): JSX.Element => {
   return (
     <ChatboxHomePageStyled>
       <Header />
-      <Nav />
+      <Tabs />
       <Chats />
       <WidgetNewMessage />
     </ChatboxHomePageStyled>
