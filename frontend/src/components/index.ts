@@ -1,5 +1,5 @@
 export * from './footer/Footer'
-export * from '../pages/chat/components/icons/IconArrowBack'
+export * from './header/Header'
 export * from './icons/IconLogoBox'
 export * from './icons/IconLogoChat'
 export * from './icons/IconMagnifyingGlass'

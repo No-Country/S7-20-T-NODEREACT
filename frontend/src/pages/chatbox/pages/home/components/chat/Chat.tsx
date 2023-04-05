@@ -1,4 +1,4 @@
-import { ProfileImage } from '@/pages/home/components'
+import { ProfileImage } from '@/pages/chatbox/pages/home/components'
 import styled from 'styled-components'
 
 const ChatStyled = styled('article')`
