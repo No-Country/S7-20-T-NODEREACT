@@ -29,7 +29,7 @@ const NavBorder = styled('span')`
   height: clamp(0.25rem, 0.25vw, 0.5rem);
   position: absolute;
   left: 0;
-  bottom: -80%;
+  bottom: -85%;
   background-color: #6D6BC5;
   transition: width 300ms;
 `

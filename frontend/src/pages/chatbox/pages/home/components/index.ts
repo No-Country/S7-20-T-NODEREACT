@@ -1,4 +1,5 @@
 export * from './chat/Chat'
+export * from './chat/Chats'
 export * from './chat/ProfileImage'
 export * from './chat/WidgetNewMessage'
 export * from './header/Header'

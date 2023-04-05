@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const WidgetNewMessageStyled = styled(Link)`
-  position: fixed;
+  position: absolute;
   bottom: 5%;
-  right: 5%;
+  right: 10%;
   
   svg {
     width: clamp(2.5rem, 2.5vw, 4rem);
