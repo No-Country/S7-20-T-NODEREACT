@@ -38,10 +38,15 @@ const data = [
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem clamp(0.3rem, 1vw, 2rem) 6rem clamp(0.3rem, 1vw, 2rem);
+  padding: 2rem clamp(0.3rem, 1vw, 2rem) 2rem clamp(0.3rem, 1vw, 2rem);
   min-height: 100%;
   gap: 0.5rem;
-  background-color: #281828;
+  margin: auto;
+
+  @media screen and (min-width: 49.75rem) {
+    max-width: 41rem;
+    padding: 2.5rem 1rem 4rem 1rem;
+  }
 `
 
 const ChatsContainer = (): JSX.Element => {
