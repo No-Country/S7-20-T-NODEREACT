@@ -2,6 +2,8 @@ import { css } from 'styled-components'
 
 export const attributes = css`
   [svg-box-shadow] {
+    width: clamp(2rem, 2vw, 4rem) ;
+    height: clamp(2rem, 2vw, 4rem) ;
     fill: #281828;
     background-color: #fafbfb;
     outline: clamp(0.125rem, 0.125vw, 0.25rem) solid #281828;
