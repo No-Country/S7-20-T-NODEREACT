@@ -2,12 +2,21 @@ import { IconAddReaction, IconAttachFileAdd } from '@/pages/chatbox/pages/chat/c
 import styled from 'styled-components'
 
 const StyledFooter = styled.footer`
-  position: fixed;
+  position: sticky;
   bottom:0;
-  width:100%;
+
+  @media screen and (min-width: 49.75rem) {
+    padding: 0 1rem;
+    padding-bottom:1.625rem;
+    background: inherit;
+  }
+`
+
+const WrapperFooterItems = styled.div`
+  width: 100%;
+  margin: auto;
   height:74px;
   border-top: 2px solid #6361B3;
-  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,6 +32,11 @@ const StyledFooter = styled.footer`
     fill: #9C959C;
     outline: clamp(0.125rem, 0.125vw, 0.25rem) solid #534653;
     padding: 0.1rem;
+  }
+
+  @media screen and (min-width: 49.75rem) {
+    max-width: 40rem;
+    border-radius: 0.5rem;
   }
 `
 
@@ -46,9 +60,11 @@ const StyledInput = styled.input`
 const Footer = (): JSX.Element => {
   return (
     <StyledFooter>
-      <IconAddReaction />
-      <StyledInput type='text' placeholder='Enviar mensaje a Dan' />
-      <IconAttachFileAdd />
+      <WrapperFooterItems>
+        <IconAddReaction />
+        <StyledInput type='text' placeholder='Enviar mensaje a Dan' />
+        <IconAttachFileAdd />
+      </WrapperFooterItems>
     </StyledFooter>
   )
 }

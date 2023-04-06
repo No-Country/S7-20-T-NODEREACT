@@ -1,19 +1,19 @@
 import { IconArrowBack, IconMoreVert } from '@/pages/chatbox/pages/chat/components'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { IconSearch } from '../../../home/components'
 
 const StyledHeader = styled.header`
-  position: fixed;
+  position: sticky;
   top:0;
   width:100%;
-  z-index: 1;
+  height: clamp(4.625rem, 8vw,5rem);
   display: flex;
-  flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   border-bottom: clamp(0.125rem, 0.125vw, 0.25rem) solid #281828;
   background-color: #c9dbdb;
-  padding: clamp(1rem, 1vw, 2rem);
+  padding: clamp(1rem, 2vw, 1.188rem) clamp(1rem, 2vw, 1.5rem);
   
   svg {
     width: clamp(2rem, 2vw, 4rem) ;
@@ -55,7 +55,7 @@ const WrapperUserData = styled.div`
 const UserAvatarPlaceholder = styled.div<{ userAvatar: string }>`
   width: clamp(2.5rem, 1vw, 4.5rem) ;
   height: clamp(2.63rem, 1vw, 4.63rem) ;
-  margin-left: 16px;
+  margin-left: clamp(1.375rem, 4vw, 2.375rem);
   background-color: #7F7F7F;
   border-radius: 4px;
   background-image: ${props => props.userAvatar.length >= 1 ? `url(${props.userAvatar})` : ''};
@@ -73,6 +73,16 @@ const UserStatusInAvatar = styled.div`
   margin-left: auto;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
+`
+
+const WrapperRightItems = styled.div`
+  margin-left: auto;
+  padding-right: 2.5rem;
+  visibility: hidden;
+
+  @media screen and (min-width: 49.75rem) {
+    visibility: visible;
+  }
 `
 
 const Header = (): JSX.Element => {
@@ -94,6 +104,9 @@ const Header = (): JSX.Element => {
           {userIsWritting && <UserStatus>escribiendo...</UserStatus>}
         </WrapperUserInfo>
       </WrapperUserData>
+      <WrapperRightItems>
+        <IconSearch />
+      </WrapperRightItems>
       <IconMoreVert />
     </StyledHeader>
   )
