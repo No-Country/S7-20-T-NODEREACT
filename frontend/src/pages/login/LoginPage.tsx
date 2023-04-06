@@ -14,7 +14,7 @@ const LoginPageStyled = styled('main')`
 const LoginPage = (): JSX.Element => {
   return (
     <LoginPageStyled>
-      <Link to='/register'><IconArrowBack /></Link>
+      <Link to='/welcome'><IconArrowBack /></Link>
       <Logo />
       <SignIn />
     </LoginPageStyled>
