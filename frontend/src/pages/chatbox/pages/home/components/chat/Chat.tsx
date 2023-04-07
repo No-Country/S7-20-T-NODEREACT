@@ -1,4 +1,6 @@
+import { UserContext } from '@/context'
 import { ProfileImage } from '@/pages/chatbox/pages/home/components'
+import { useContext } from 'react'
 import styled from 'styled-components'
 
 const ChatStyled = styled('article')`
@@ -10,6 +12,7 @@ const ChatStyled = styled('article')`
   gap: 0 clamp(0.5rem, 0.5vw, 1rem);
   font-size: clamp(0.75rem, 0.75vw, 1.5rem);
   font-weight: 500;
+  cursor: pointer;
 `
 const ChatHeader = styled('header')`
   grid-area: header;
@@ -49,8 +52,10 @@ const ChatFooterBadge = styled('span')`
 `
 
 const Chat = (): JSX.Element => {
+  const { handleSelectedChatId } = useContext(UserContext)
+
   return (
-    <ChatStyled>
+    <ChatStyled onClick={() => handleSelectedChatId('12')}>
       <ProfileImage />
       <ChatHeader>
         <ChatHeaderName>Carla Matos</ChatHeaderName>
