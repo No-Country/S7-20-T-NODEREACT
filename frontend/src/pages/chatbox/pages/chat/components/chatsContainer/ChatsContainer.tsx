@@ -42,6 +42,8 @@ const Container = styled.div`
   min-height: 100%;
   gap: 0.5rem;
   margin: auto;
+  z-index: -1;
+  position: relative;
 
   @media screen and (min-width: 49.75rem) {
     max-width: 41rem;

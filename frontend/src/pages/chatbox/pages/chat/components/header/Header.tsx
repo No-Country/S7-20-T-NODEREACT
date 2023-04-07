@@ -1,10 +1,9 @@
 import { IconArrowBack } from '@/components'
-import { IconMoreVert } from '@/pages/chatbox/pages/chat/components'
-import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { IconSearch } from '../../../home/components'
 import { UserContext } from '@/context'
 import { useContext } from 'react'
+import { HeaderOptions } from './HeaderOptions'
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -78,7 +77,8 @@ const UserStatusInAvatar = styled.div`
   border-radius: 4px;
 `
 
-const WrapperRightItems = styled.div`
+const WrapperSearchIcon = styled.div`
+  cursor: pointer;
   margin-left: auto;
   padding-right: 2.5rem;
   visibility: hidden;
@@ -86,6 +86,10 @@ const WrapperRightItems = styled.div`
   @media screen and (min-width: 49.75rem) {
     visibility: visible;
   }
+`
+
+const WrapperIcon = styled.div`
+  cursor: pointer;
 `
 
 const Header = (): JSX.Element => {
@@ -98,9 +102,9 @@ const Header = (): JSX.Element => {
   return (
     <StyledHeader>
       <WrapperUserData>
-        <NavLink to='/chatbox' onClick={() => handleSelectedChatId(null)}>
+        <WrapperIcon onClick={() => handleSelectedChatId(null)}>
           <IconArrowBack />
-        </NavLink>
+        </WrapperIcon>
         <UserAvatarPlaceholder userAvatar={userAvatar}>
           {userIsOnline && <UserStatusInAvatar />}
         </UserAvatarPlaceholder>
@@ -109,10 +113,10 @@ const Header = (): JSX.Element => {
           {userIsWritting && <UserStatus>escribiendo...</UserStatus>}
         </WrapperUserInfo>
       </WrapperUserData>
-      <WrapperRightItems>
+      <WrapperSearchIcon>
         <IconSearch />
-      </WrapperRightItems>
-      <IconMoreVert />
+      </WrapperSearchIcon>
+      <HeaderOptions />
     </StyledHeader>
   )
 }
