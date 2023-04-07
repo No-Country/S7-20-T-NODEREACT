@@ -14,7 +14,7 @@ const ChatboxPage = (): JSX.Element => {
   return (
     <ChatboxPageStyled>
       <ChatboxHomePage />
-      {/* <ChatboxChatPage /> */}
+      <ChatboxChatPage />
     </ChatboxPageStyled>
   )
 }

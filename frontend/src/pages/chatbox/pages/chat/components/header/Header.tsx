@@ -3,6 +3,8 @@ import { IconMoreVert } from '@/pages/chatbox/pages/chat/components'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { IconSearch } from '../../../home/components'
+import { UserContext } from '@/context'
+import { useContext } from 'react'
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -91,10 +93,12 @@ const Header = (): JSX.Element => {
 
   const { userName, userAvatar, userIsWritting, userIsOnline } = senderData
 
+  const { handleSelectedChatId } = useContext(UserContext)
+
   return (
     <StyledHeader>
       <WrapperUserData>
-        <NavLink to='/'>
+        <NavLink to='/chatbox' onClick={() => handleSelectedChatId(null)}>
           <IconArrowBack />
         </NavLink>
         <UserAvatarPlaceholder userAvatar={userAvatar}>
