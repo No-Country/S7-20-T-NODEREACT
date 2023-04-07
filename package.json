@@ -1,0 +1,26 @@
+{
+  "name": "s7-20-t-nodereact",
+  "version": "1.0.0",
+  "description": "ChatBox",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/No-Country/S7-20-T-NODEREACT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/No-Country/S7-20-T-NODEREACT/issues"
+  },
+  "homepage": "https://github.com/No-Country/S7-20-T-NODEREACT#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.5.0",
+    "@commitlint/config-conventional": "^17.4.4",
+    "husky": "^8.0.3",
+    "typescript": "^5.0.2"
+  }
+}
