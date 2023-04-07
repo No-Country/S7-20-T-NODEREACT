@@ -1,7 +1,9 @@
+import { Hero } from '@/pages/home/components'
+
 const HomePage = (): JSX.Element => {
   return (
     <main>
-      home page
+      <Hero />
     </main>
   )
 }
