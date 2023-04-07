@@ -19,7 +19,7 @@ const Button = styled('button')<{ secondary?: boolean }>`
   box-shadow: clamp(0.375rem, 0.375vw, 0.75rem) clamp(0.375rem, 0.375vw, 0.75rem) 0 var(--color-bx);
   border-radius: clamp(0.25rem, 0.25vw, 0.5rem);
   background-color: var(--color-bg);
-  padding: clamp(1rem, 1vw, 2rem) 0;
+  padding: clamp(1rem, 1vw, 2rem) clamp(0.5rem, 0.5vw, 1rem);
   transition: background-color 300ms, outline 300ms, box-shadow 300ms;
 
   :hover {
