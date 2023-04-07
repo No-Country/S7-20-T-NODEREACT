@@ -1,4 +1,5 @@
-import { IconArrowBack, IconMoreVert } from '@/pages/chatbox/pages/chat/components'
+import { IconArrowBack } from '@/components'
+import { IconMoreVert } from '@/pages/chatbox/pages/chat/components'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { IconSearch } from '../../../home/components'

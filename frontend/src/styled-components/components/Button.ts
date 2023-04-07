@@ -14,11 +14,12 @@ const Button = styled('button')<{ secondary?: boolean }>`
   color: var(--color-text);
   font-size: clamp(0.875rem, 0.875vw, 1.75rem);
   font-weight: 900;
+  text-align: center;
   outline: clamp(0.125rem, 0.125vw, 0.25rem) solid var(--color-out);
   box-shadow: clamp(0.375rem, 0.375vw, 0.75rem) clamp(0.375rem, 0.375vw, 0.75rem) 0 var(--color-bx);
   border-radius: clamp(0.25rem, 0.25vw, 0.5rem);
   background-color: var(--color-bg);
-  padding: 1rem 0;
+  padding: clamp(1rem, 1vw, 2rem) 0;
   transition: background-color 300ms, outline 300ms, box-shadow 300ms;
 
   :hover {

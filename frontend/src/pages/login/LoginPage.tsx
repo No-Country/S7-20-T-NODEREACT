@@ -1,7 +1,7 @@
-import { Logo, SignIn } from '@/pages/login/components'
+import { IconArrowBack, Logo } from '@/components'
+import { SignIn } from '@/pages/login/components'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { IconArrowBack } from '../chatbox/pages/chat/components'
 
 const LoginPageStyled = styled('main')`
   display: flex;
@@ -14,7 +14,7 @@ const LoginPageStyled = styled('main')`
 const LoginPage = (): JSX.Element => {
   return (
     <LoginPageStyled>
-      <Link to='/register'><IconArrowBack /></Link>
+      <Link to='/welcome'><IconArrowBack /></Link>
       <Logo />
       <SignIn />
     </LoginPageStyled>

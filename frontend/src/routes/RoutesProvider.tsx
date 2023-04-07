@@ -1,4 +1,4 @@
-import { ChatboxNewMessagePage, ChatboxPage, ErrorPage, FaqsPage, FeaturesPage, HomePage, LayoutPages, LoginPage, PrivacyPage, RegisterPage } from '@/pages'
+import { ChatboxNewMessagePage, ChatboxPage, ErrorPage, FaqsPage, FeaturesPage, HomePage, LayoutPages, LoginPage, PrivacyPage, RegisterPage, WelcomePage } from '@/pages'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 const RoutesProvider = (): JSX.Element => {
@@ -15,6 +15,7 @@ const RoutesProvider = (): JSX.Element => {
         <Route path='/chatbox' element={<ChatboxPage />} />
         <Route path='/chatbox/chat/:chat' element={<ChatboxPage />} />
         <Route path='/chatbox/new-message' element={<ChatboxNewMessagePage />} />
+        <Route path='/welcome' element={<WelcomePage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/login' element={<LoginPage />} />
       </Routes>
