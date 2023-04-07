@@ -2,6 +2,7 @@ import { IconAddReaction, IconAttachFileAdd } from '@/pages/chatbox/pages/chat/c
 import { useState } from 'react'
 import styled from 'styled-components'
 import { FooterAttachOptions } from './FooterAttachOptions'
+import { IconSend } from '../icons/IconSend'
 
 const StyledFooter = styled.footer`
   position: sticky;
@@ -39,7 +40,7 @@ const StyledInput = styled.input`
   font-size: clamp(12px, 2vw, 14px);
   line-height: 150%;
   padding: 12px 8px;
-  width: calc(100% - 90px);
+  width: calc(100% - 8.125rem);
   height: 42px;
   background: #281828;
   border: 2px solid #534653;
@@ -73,6 +74,13 @@ const IconActionWrapper = styled.div`
   cursor: pointer;
 `
 
+const IconSendWrapper = styled.div`
+  cursor: pointer;
+  svg {
+  fill: #8A89D1;
+  }
+`
+
 const Footer = (): JSX.Element => {
   const [showAttachOptions, setShowAttachOptions] = useState(false)
 
@@ -89,6 +97,9 @@ const Footer = (): JSX.Element => {
           <IconActionWrapper onClick={handleAttachClick}>
             <IconAttachFileAdd />
           </IconActionWrapper>
+          <IconSendWrapper>
+            <IconSend />
+          </IconSendWrapper>
         </WrapperMainOptions>
         <FooterAttachOptions show={showAttachOptions} />
       </WrapperFooterItems>
