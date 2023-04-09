@@ -1,20 +1,10 @@
 import { prop, getModelForClass, modelOptions } from "@typegoose/typegoose";
-import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import { Strategy as GitHubStrategy } from 'passport-github2';
-import { Strategy as FacebookStrategy } from 'passport-facebook';
+import { Strategy as GoogleStrategy, Profile as ProfileGoogle } from 'passport-google-oauth20';
+import { Strategy as GitHubStrategy, Profile as ProfileGithub } from 'passport-github2';
+import { Strategy as FacebookStrategy, Profile as ProfileFacebook } from 'passport-facebook';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
-
-
-
-const GOOGLE_CLIENT_ID = 'your-google-client-id';
-const GOOGLE_CLIENT_SECRET = 'your-google-client-secret';
-const GITHUB_CLIENT_ID = 'your-github-client-id';
-const GITHUB_CLIENT_SECRET = 'your-github-client-secret';
-const FACEBOOK_APP_ID = 'your-facebook-app-id';
-const FACEBOOK_APP_SECRET = 'your-facebook-app-secret';
-
 
 
 class User {
@@ -66,16 +56,15 @@ class User {
 const userModel = getModelForClass(User)
 export default userModel
 
-
 // Configuración de la autenticación con Google
 passport.use(
     new GoogleStrategy(
         {
-            clientID: process.env.GOOGLE_CLIENT_ID!,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-            callbackURL: 'http://localhost:3000/auth/google/callback',
+            clientID: '620795611497-b0u8chs09vn7gc08rtco9gi7mppfgsjn.apps.googleusercontent.com',
+            clientSecret: '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',
+            callbackURL: 'http://localhost:5000/auth/google/callback',
         },
-        async (accessToken, refreshToken, profile, done) => {
+        async (accessToken: string, refreshToken: string,  profile: ProfileGoogle, done: (error: any, user?: any) => void ) => {
             const email = profile.emails?.[0].value;
             const existingUser = await userModel.findOne({ googleId: profile.id });
             if (existingUser) {
@@ -94,7 +83,7 @@ passport.use(
                 googleId: profile.id,
             });
             await newUser.save();
-            return done(null, newUser);
+            return done(null, newUser); 
         }
     )
 );
@@ -103,11 +92,11 @@ passport.use(
 passport.use(
     new GitHubStrategy(
         {
-            clientID: process.env.GITHUB_CLIENT_ID!,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-            callbackURL: 'http://localhost:3000/auth/github/callback',
+            clientID: '9b6596363f17d0a17e87',
+            clientSecret: '40204ac5e7a7cb5667966ab046436775eea07846',
+            callbackURL: 'http://localhost:5000/auth/github/callback',
         },
-        async (accessToken, refreshToken, profile, done) => {
+        async (accessToken: string, refreshToken: string,  profile: ProfileGithub, done: (error: any, user?: any) => void ) => {
             const email = profile.emails?.[0].value;
             const existingUser = await userModel.findOne({ githubId: profile.id });
             if (existingUser) {
@@ -130,17 +119,17 @@ passport.use(
         }
     )
 );
-
+/*
 // Configuración de la autenticación con Facebook
 passport.use(
     new FacebookStrategy(
         {
             clientID: process.env.FACEBOOK_CLIENT_ID!,
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
-            callbackURL: 'http://localhost:3000/auth/facebook/callback',
+            callbackURL: 'http://localhost:5000/auth/facebook/callback',
             profileFields: ['id', 'displayName', 'email'],
         },
-        async (accessToken, refreshToken, profile, done) => {
+        async (accessToken: string, refreshToken: string,  profile: ProfileFacebook, done: (error: any, user?: any) => void ) => {
             const email = profile.emails?.[0].value;
             const existingUser = await userModel.findOne({ facebookId: profile.id });
             if (existingUser) {
@@ -163,6 +152,7 @@ passport.use(
         }
     )
 );
+*/
 // @modelOptions({
 //     schemaOptions: {
 //         timestamps: true,
