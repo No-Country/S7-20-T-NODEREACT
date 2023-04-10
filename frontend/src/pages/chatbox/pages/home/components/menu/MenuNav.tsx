@@ -1,5 +1,5 @@
-import { IconScheduleSend } from '@/components'
-import { IconAccountCircle, IconAddPerson, IconBell, IconBookmark, IconEditComment, IconGroupAdd, IconHelp, IconSetting } from '@/pages/chatbox/pages/home/components'
+import { IconScheduleSend, IconHelp } from '@/components'
+import { IconAccountCircle, IconAddPerson, IconBell, IconBookmark, IconEditComment, IconGroupAdd, IconSetting } from '@/pages/chatbox/pages/home/components'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 

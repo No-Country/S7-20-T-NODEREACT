@@ -1,5 +1,4 @@
-import { Button } from '@/styled-components/components'
-import { Link } from 'react-router-dom'
+import { ButtonLink } from '@/styled-components/components'
 import styled from 'styled-components'
 
 const CallToActionStyled = styled('section')`
@@ -51,7 +50,7 @@ const CallToAction = (): JSX.Element => {
       <CallToActionInfo>
         <CallToActionHeading>¿Te gustaría estar conectado con tus seres queridos de manera más cercana y personal?</CallToActionHeading>
         <CallToActionParagraph>Nuestra aplicación te permite estar en contacto con las personas que más importan en tu vida, sin importar dónde te encuentres.</CallToActionParagraph>
-        <Button to='/welcome' as={Link} secondary>ABRIR CHATBOX EN TU NAVEGADOR</Button>
+        <ButtonLink to='/welcome' secondary='true'>ABRIR CHATBOX EN TU NAVEGADOR</ButtonLink>
       </CallToActionInfo>
       <WrapperImages>
         <CallToActionImage src='https://res.cloudinary.com/dos3i5jqy/image/upload/v1680896361/chatbox/images/Device_Android_LIP_kvqsay.png' alt='Imagen con diseño de la bienvenido a la app en vista mobile' />

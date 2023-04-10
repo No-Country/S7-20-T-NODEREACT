@@ -1,3 +1,4 @@
+import { ButtonLink } from '@/styled-components/components'
 import styled from 'styled-components'
 
 const HeroStyled = styled('section')`
@@ -10,7 +11,6 @@ const HeroStyled = styled('section')`
   background-position: center;
   padding: clamp(7.5rem, 14vw, 28rem) clamp(1rem, 7.5vw, 15rem);
 `
-
 const HeroHeading = styled('h1')`
   width: 40%;
   color: #ffffff;
@@ -37,11 +37,23 @@ const WrapperAvailableApps = styled('div')`
 const HeroAppsImage = styled('img')`
   aspect-ratio: 3;
 `
+const HeroButton = styled(ButtonLink)`
+  display: none;
+  
+  @media screen and (max-width: 64rem) {
+     display: block;
+     width: 40%;
+  }
+  @media screen and (max-width: 49.75rem) {
+     width: 100%;
+  }
+`
 
 const Hero = (): JSX.Element => {
   return (
     <HeroStyled>
       <HeroHeading>La mejor manera de mantenerse en contacto con quienes más importan.</HeroHeading>
+      <HeroButton to='/welcome'>ABRIR CHATBOX</HeroButton>
       <WrapperAvailableApps>
         <HeroAppsImage src='https://res.cloudinary.com/dos3i5jqy/image/upload/v1680879824/chatbox/images/0BpxdgM3WUr_1_v9jcf9.png' alt='Imagen de app disponible en Playstore' />
         <HeroAppsImage src='https://res.cloudinary.com/dos3i5jqy/image/upload/v1680879824/chatbox/images/LjIQEL8csb0_1_jy7j28.png' alt='Imagen de app consíguelo en Microsoft' />
