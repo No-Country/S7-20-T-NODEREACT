@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const NavStyled = styled('nav')`
+@media screen and (max-width: 64rem) {
+   display: none;
+}
 `
 const NavList = styled('ul')`
   display: flex;
