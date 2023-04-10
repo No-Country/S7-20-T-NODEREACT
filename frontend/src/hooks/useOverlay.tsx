@@ -4,6 +4,7 @@ interface Object {
   state: boolean
   showOverlay: () => void
   closeOverlay: (ev: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  closeOverlayWithElement: () => void
 }
 
 const useOverlay = (): Object => {
@@ -17,7 +18,9 @@ const useOverlay = (): Object => {
     ev.target === ev.currentTarget && setState(false)
   }
 
-  return { state, showOverlay, closeOverlay }
+  const closeOverlayWithElement = (): void => setState(false)
+
+  return { state, showOverlay, closeOverlay, closeOverlayWithElement }
 }
 
 export { useOverlay }
