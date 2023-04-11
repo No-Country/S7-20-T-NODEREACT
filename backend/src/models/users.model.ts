@@ -1,4 +1,4 @@
-import { prop, getModelForClass, modelOptions } from "@typegoose/typegoose";
+import { prop, getModelForClass, pre, DocumentType } from "@typegoose/typegoose";
 import { Strategy as GoogleStrategy, Profile as ProfileGoogle } from 'passport-google-oauth20';
 import { Strategy as GitHubStrategy, Profile as ProfileGithub } from 'passport-github2';
 import { Strategy as FacebookStrategy, Profile as ProfileFacebook } from 'passport-facebook';
@@ -6,19 +6,24 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
 
-
-class User {
+@pre<User>('save', async function (next) {
+    if (this.isModified('password')) {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(this.password, salt);
+        this.password = hashedPassword;
+    }
+    next();
+})
+    
+export class User {
     @prop()
     public _id?: string
 
-    @prop({ required: true })
-    public name!: string;
-
-    @prop({ required: true, unique: true })
-    public email!: string;
+    @prop({ required: true, unique: true, lowercase: true, trim: true })
+    email!: string;
 
     @prop({ required: true })
-    public password!: string;
+    password!: string;
 
     @prop()
     public googleId?: string;
@@ -29,8 +34,8 @@ class User {
     @prop()
     public facebookId?: string;
 
-    public async comparePassword(password: string): Promise<boolean> {
-        return bcrypt.compare(password, this.password);
+    public async comparePassword(this: DocumentType<User>, password: string): Promise<boolean> {
+        return await bcrypt.compare(password, this.password);
     }
 
     public generateAuthToken(): string {
@@ -53,31 +58,33 @@ class User {
     }
 }
 
-const userModel = getModelForClass(User)
-export default userModel
 
+
+const UserModel = getModelForClass(User);
+
+export default UserModel;
 // Configuración de la autenticación con Google
 passport.use(
     new GoogleStrategy(
         {
-            clientID: '620795611497-b0u8chs09vn7gc08rtco9gi7mppfgsjn.apps.googleusercontent.com',
-            clientSecret: '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',
+            clientID: process.env.GOOGLE_CLIENT_ID ||'620795611497-b0u8chs09vn7gc08rtco9gi7mppfgsjn.apps.googleusercontent.com',
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET ||'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',
             callbackURL: 'http://localhost:5000/auth/google/callback',
         },
         async (accessToken: string, refreshToken: string,  profile: ProfileGoogle, done: (error: any, user?: any) => void ) => {
             const email = profile.emails?.[0].value;
-            const existingUser = await userModel.findOne({ googleId: profile.id });
+            const existingUser = await UserModel.findOne({ googleId: profile.id });
             if (existingUser) {
                 return done(null, existingUser);
             } else if (email) {
-                const user = await userModel.findOne({ email });
+                const user = await UserModel.findOne({ email });
                 if (user) {
                     user.googleId = profile.id;
                     await user.save();
                     return done(null, user);
                 }
             }
-            const newUser = new userModel({
+            const newUser = new UserModel({
                 name: profile.displayName,
                 email,
                 googleId: profile.id,
@@ -92,24 +99,24 @@ passport.use(
 passport.use(
     new GitHubStrategy(
         {
-            clientID: '9b6596363f17d0a17e87',
-            clientSecret: '40204ac5e7a7cb5667966ab046436775eea07846',
+            clientID: process.env.GITHUB_CLIENT_ID || '9b6596363f17d0a17e87',
+            clientSecret: process.env.GITHUB_CLIENT_SECRET || '40204ac5e7a7cb5667966ab046436775eea07846',
             callbackURL: 'http://localhost:5000/auth/github/callback',
         },
         async (accessToken: string, refreshToken: string,  profile: ProfileGithub, done: (error: any, user?: any) => void ) => {
             const email = profile.emails?.[0].value;
-            const existingUser = await userModel.findOne({ githubId: profile.id });
+            const existingUser = await UserModel.findOne({ githubId: profile.id });
             if (existingUser) {
                 return done(null, existingUser);
             } else if (email) {
-                const user = await userModel.findOne({ email });
+                const user = await UserModel.findOne({ email });
                 if (user) {
                     user.githubId = profile.id;
                     await user.save();
                     return done(null, user);
                 }
             }
-            const newUser = new userModel({
+            const newUser = new UserModel({
                 name: profile.displayName,
                 email,
                 githubId: profile.id,
@@ -131,11 +138,11 @@ passport.use(
         },
         async (accessToken: string, refreshToken: string,  profile: ProfileFacebook, done: (error: any, user?: any) => void ) => {
             const email = profile.emails?.[0].value;
-            const existingUser = await userModel.findOne({ facebookId: profile.id });
+            const existingUser = await UserModel.findOne({ facebookId: profile.id });
             if (existingUser) {
                 return done(null, existingUser);
             } else if (email) {
-                const user = await userModel.findOne({ email });
+                const user = await UserModel.findOne({ email });
                 if (user) {
                     user.facebookId = profile.id;
                     await user.save();

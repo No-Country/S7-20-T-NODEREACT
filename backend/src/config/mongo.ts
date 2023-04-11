@@ -11,3 +11,4 @@ export const dbConnection = async () => {
     throw new Error('Error at database startup');
   }
 };
+

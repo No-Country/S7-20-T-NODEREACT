@@ -1,6 +1,7 @@
 import express, {Express} from 'express';
 import cors from 'cors'
 import { router } from '../routes/user.routes'
+import authRoutes from '../routes/auth.routes'
 import { dbConnection } from '../config/mongo';
 
 export class Server {
@@ -38,6 +39,7 @@ export class Server {
 
   routes() {
     this.app.use(this.usersPath, router);
+    this.app.use(this.usersPath, authRoutes)
   }
 
   listen() {
