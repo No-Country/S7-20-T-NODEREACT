@@ -1,9 +1,12 @@
 import { IconPerson, IconPhotoAlternate, IconScheduleSend } from '@/pages/chatbox/pages/chat/components'
+import { useState } from 'react'
 import styled from 'styled-components'
+import { FooterScheduleOptions } from './FooterScheduleOptions'
 
 const WrapperAttachOptions = styled.div<{ show: boolean }>`
   opacity: ${props => props.show ? '1' : '0'};
   transition: opacity 0.4s ease-in-out 0s;
+  height: 74px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,26 +41,42 @@ const WrapperIcon = styled.div`
     }
 `
 
+const WrapperFooterItems = styled.div<{ show: boolean }>`
+  width: 100%;
+  height: ${props => props.show ? '282px' : '130px'};
+  transition:  height 0.4s;
+  overflow: hidden;
+`
+
 interface Props {
   show: boolean
 }
 
 const FooterAttachOptions = ({ show }: Props): JSX.Element => {
+  const [showScheduleOptions, setShowScheduleOptions] = useState(false)
+
+  const handleAttachClick = (): void => {
+    setShowScheduleOptions(!showScheduleOptions)
+  }
+
   return (
-    <WrapperAttachOptions show={show}>
-      <WrapperIcon>
-        <IconPerson />
-        <p>Contacto</p>
-      </WrapperIcon>
-      <WrapperIcon>
-        <IconPhotoAlternate />
-        <p>Imágenes</p>
-      </WrapperIcon>
-      <WrapperIcon>
-        <IconScheduleSend />
-        <p>Programar</p>
-      </WrapperIcon>
-    </WrapperAttachOptions>
+    <WrapperFooterItems show={showScheduleOptions}>
+      <WrapperAttachOptions show={show}>
+        <WrapperIcon>
+          <IconPerson />
+          <p>Contacto</p>
+        </WrapperIcon>
+        <WrapperIcon>
+          <IconPhotoAlternate />
+          <p>Imágenes</p>
+        </WrapperIcon>
+        <WrapperIcon onClick={handleAttachClick}>
+          <IconScheduleSend />
+          <p>Programar</p>
+        </WrapperIcon>
+      </WrapperAttachOptions>
+      <FooterScheduleOptions show={showScheduleOptions} onClick={handleAttachClick} />
+    </WrapperFooterItems>
   )
 }
 export { FooterAttachOptions }

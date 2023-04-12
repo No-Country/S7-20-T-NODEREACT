@@ -20,8 +20,8 @@ const StyledFooter = styled.footer`
 const WrapperFooterItems = styled.div<{ show: boolean }>`
   width: 100%;
   margin: auto;
-  height: ${props => props.show ? '204px' : '74px'};
-  transition: height 0.4s;
+  max-height: ${props => props.show ? '282px' : '74px'};
+  transition:  max-height 0.4s;
   overflow: hidden;
   border-top: 2px solid #6361B3;
   display: flex;
