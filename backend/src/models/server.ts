@@ -39,7 +39,7 @@ export class Server {
 
   routes() {
     this.app.use(this.usersPath, router);
-    this.app.use(this.usersPath, authRoutes)
+    this.app.use(this.usersPath, authRoutes);
   }
 
   listen() {
