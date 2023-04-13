@@ -8,3 +8,5 @@ router.get('/chats', chatController.getChats);
 router.get('/chats/:id', chatController.getChat);
 router.patch('/chats/:id', chatController.updateChat);
 router.delete('/chats/:id', chatController.deleteChat);
+
+export default router;

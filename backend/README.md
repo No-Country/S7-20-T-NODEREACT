@@ -6,34 +6,76 @@
 npm install
 ```
 
-### Endpoints
+## Endpoints
 
-## Users
+### Users
 
-```
-http://localhost:8080/users/me
-```
-
-- Get own profile
+- Get own profile (GET)
 
 ```
-http://localhost:8080/users
+http://localhost:8080/api/v1/users/me
 ```
 
-- Get all Users
-
-## Auth
+- Get all Users (GET)
 
 ```
-http://localhost:8080/signup
-
+http://localhost:8080/api/v1/users
 ```
 
-- Create a new user
+### Auth
+
+- Create a new user (POST)
 
 ```
-http://localhost:8080/signin
+http://localhost:8080/api/v1/signup
 
 ```
 
-- Login
+- Login (POST)
+
+```
+http://localhost:8080/api/v1/signin
+
+```
+
+- Login with providers (GET)
+
+```
+http://localhost:8080/api/v1/auth/github
+```
+
+```
+http://localhost:8080/api/v1/auth/google
+```
+
+### chats
+
+- Create chat (POST)
+
+```
+http://localhost:8080/api/v1/chats
+```
+
+- Get chats (GET)
+
+```
+http://localhost:8080/api/v1/chats
+```
+
+- Get chat by id (GET)
+
+```
+http://localhost:8080/api/v1/chats/:id
+```
+
+- Update chat (PATCH)
+
+```
+http://localhost:8080/api/v1/chats/:id
+```
+
+- Delete chat (DELTE)
+
+```
+http://localhost:8080/api/v1/chats/:id
+```
