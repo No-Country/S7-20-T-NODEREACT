@@ -10,7 +10,7 @@ function createToken(user: IUser) {
     });
 }
 
-export const signUp = async (
+const signUp = async (
     req: Request,
     res: Response
 ): Promise<Response> => {
@@ -31,7 +31,7 @@ export const signUp = async (
     return res.status(201).json(newUser);
 };
 
-export const signIn = async (
+const signIn = async (
     req: Request,
     res: Response
 ): Promise<Response> => {
@@ -56,28 +56,64 @@ export const signIn = async (
     });
 };
 
-export async function getUserByEmail(req: Request, res: Response) {
-    const getUser = await UserModel.findOne({ email: "bfix77@gmail.com" })
-    res.status(200).json({
-        getUser
-    })
-}
-export async function getAllUsers(req: Request, res: Response) {
-    const getAllUser = await UserModel.find({}, { firstName: 1, _id: 0 })
-
-    res.status(200).json({
-        getAllUser
-    })
-}
-
-export async function updateUser(req: Request, res: Response) {
-    const putUser = await UserModel.findOneAndUpdate({ email: "" }, { firstName: "" }, { new: true })
-    res.status(200).json(putUser)
+async function getUser(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+        const user = await UserModel.findById(id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: error });
+    }
 }
 
-export async function deleteUser(req: Request, res: Response) {
-    const deleteUser = await UserModel.findOneAndDelete({ email: "" })
-    res.status(200).json(deleteUser)
+async function getUsers(req: Request, res: Response) {
+    try {
+        const users = await UserModel.find();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: error});
+    }
 }
+
+
+async function updateUser(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+        const updatedUser = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
+        if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(updatedUser);
+    } catch (error) {
+        res.status(400).json({ message: error });
+    }
+}
+
+
+async function deleteUser(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+        const deletedUser = await UserModel.findByIdAndDelete(id);
+        if (!deletedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(deletedUser);
+    } catch (error) {
+        res.status(500).json({ message: error });
+    }
+}
+
+export const UserController = {
+    signUp,
+    signIn,
+    getUsers,
+    getUser,
+    updateUser,
+    deleteUser,
+};
+
 
 

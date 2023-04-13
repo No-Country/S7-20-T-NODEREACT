@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { signIn, signUp } from '../controllers/users.controllers'
+import { UserController  } from '../controllers/users.controllers'
 import { googleAuth, githubAuth } from '../utils/auth'
 import passport from 'passport'
 
@@ -8,8 +8,8 @@ googleAuth.passport.authenticate('google')
 const router = Router()
 
 
-router.post('/signup', signUp)
-router.post('/signin', signIn)
+router.post('/signup', UserController.signUp)
+router.post('/signin', UserController.signIn)
 router.get('/auth/github', githubAuth.passport.authenticate('github'))
 router.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/signin' }),
