@@ -13,7 +13,8 @@ const HeaderStyled = styled('header')`
   align-items: center;
   background-color: #C9DBDB;
   padding: clamp(1rem, 1vw, 2rem) clamp(1rem, 5.75vw, 11.5rem);
-  outline: 2px solid #281828;
+  outline: 0.125rem solid #281828;
+  z-index: 1;
 
   .header-btn {
    @media screen and (max-width: 64rem) {

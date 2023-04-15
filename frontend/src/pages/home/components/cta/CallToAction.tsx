@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 const CallToActionStyled = styled('section')`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
- @media screen and (max-width: 56rem) {
-    grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
+  
+  @media screen and (min-width: 49.75rem) {
+   grid-template-columns: repeat(2, 1fr);
  }
 `
 const CallToActionInfo = styled('div')`
@@ -26,22 +26,27 @@ const CallToActionParagraph = styled('p')`
   margin: 0 0 clamp(2rem, 2.5vw, 5rem) 0;
 `
 const WrapperImages = styled('div')`
-  position: relative;
-  padding: 0 0 clamp(8.25rem, 8.25vw, 16.5rem) 0;
-
- @media screen and (max-width: 56rem) {
-    display: none;
- }
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0 0 clamp(5rem, 15vw, 30rem) 0;
 `
 const CallToActionImage = styled('img')`
-  width: clamp(18.75rem, 18.75vw, 37rem);
-  aspect-ratio: 1 / 2;
-
-  :nth-child(1) {
-    position: absolute;
-    top: 18%;
-    left: 30%;
+  :nth-child(1){
+    transform: translate(25%, 0);
   }
+  :nth-child(2) {
+    transform: translate(-25%, 15%);
+  }
+
+ @media screen and (min-width: 49.75rem) {
+    :nth-child(1) {
+      transform: translate(0);
+    }
+    :nth-child(2) {
+      transform: translate(-50%, 25%);
+    }
+ }
 `
 
 const CallToAction = (): JSX.Element => {
@@ -53,8 +58,8 @@ const CallToAction = (): JSX.Element => {
         <ButtonLink to='/welcome' secondary='true'>ABRIR CHATBOX EN TU NAVEGADOR</ButtonLink>
       </CallToActionInfo>
       <WrapperImages>
-        <CallToActionImage src='https://res.cloudinary.com/dos3i5jqy/image/upload/v1680896361/chatbox/images/Device_Android_LIP_kvqsay.png' alt='Imagen con diseño de la bienvenido a la app en vista mobile' />
         <CallToActionImage src='https://res.cloudinary.com/dos3i5jqy/image/upload/v1680896361/chatbox/images/mockups-der_ko0nqs.png' alt='Imagen con diseño del chat la app en vista mobile' />
+        <CallToActionImage src='https://res.cloudinary.com/dos3i5jqy/image/upload/v1680896361/chatbox/images/Device_Android_LIP_kvqsay.png' alt='Imagen con diseño de la bienvenido a la app en vista mobile' />
       </WrapperImages>
     </CallToActionStyled>
   )
