@@ -3,6 +3,7 @@ import cors from 'cors';
 import { router } from '../routes/user.routes';
 import authRoutes from '../routes/auth.routes';
 import chatRoutes from '../routes/chat.routes';
+import messageRoutes from '../routes/message.routes'
 import { dbConnection } from '../config/mongo';
 
 export class Server {
@@ -39,6 +40,7 @@ export class Server {
     this.app.use(this.mainPath, router);
     this.app.use(this.mainPath, authRoutes);
     this.app.use(this.mainPath, chatRoutes);
+    this.app.use(this.mainPath, messageRoutes);
   }
 
   listen() {
