@@ -1,9 +1,11 @@
 import dotenv from 'dotenv';
-import express from 'express';
-import {Server}from './models/server'
+import User from './models/users.model'
+import { Server } from './models/server'
+
 
 dotenv.config()
 
-const server:any = new Server();
+const server: Server = new Server();
 
 server.listen()
+

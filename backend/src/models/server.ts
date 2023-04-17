@@ -1,34 +1,46 @@
-import express, {Express} from 'express';
-import cors from 'cors'
-import { router } from '../routes/user.routes'
+import express, { Express } from 'express';
+import cors from 'cors';
+import { router } from '../routes/user.routes';
+import authRoutes from '../routes/auth.routes';
+import chatRoutes from '../routes/chat.routes';
+import messageRoutes from '../routes/message.routes'
+import { dbConnection } from '../config/mongo';
 
 export class Server {
   app: Express;
   port: number | string;
-  usersPath: string;
+  mainPath: string;
 
   constructor() {
-
     this.app = express();
-    
     this.port = process.env.PORT || 8080;
 
     //* Base Route
-    this.usersPath = '/apiV1';
+    this.mainPath = '/api/v1';
+
+    this.connectDB();
 
     this.middlewares();
 
     this.routes();
   }
 
-   middlewares() {
+  //* Database Connection
+  async connectDB() {
+    await dbConnection();
+  }
+
+  middlewares() {
     this.app.use(cors());
 
     this.app.use(express.json());
   }
 
   routes() {
-    this.app.use(this.usersPath, router);
+    this.app.use(this.mainPath, router);
+    this.app.use(this.mainPath, authRoutes);
+    this.app.use(this.mainPath, chatRoutes);
+    this.app.use(this.mainPath, messageRoutes);
   }
 
   listen() {
@@ -37,4 +49,3 @@ export class Server {
     });
   }
 }
-
