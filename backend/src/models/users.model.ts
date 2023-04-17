@@ -1,9 +1,10 @@
 import { prop, getModelForClass, pre, DocumentType } from "@typegoose/typegoose";
-import { Document } from "mongoose";
+import { Document, Types } from "mongoose";
 import bcrypt from 'bcryptjs';
 
 
 export interface IUser extends Document {
+    _id?: Types.ObjectId
     email: string;
     password: string;
     comparePassword: (password: string) => Promise<Boolean>

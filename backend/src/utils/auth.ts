@@ -1,9 +1,41 @@
+import { Request, Response, NextFunction } from 'express';
 import { Strategy as GoogleStrategy, Profile as ProfileGoogle } from 'passport-google-oauth20';
 import { Strategy as GitHubStrategy, Profile as ProfileGithub } from 'passport-github2';
-import { Strategy as FacebookStrategy, Profile as ProfileFacebook } from 'passport-facebook';
-import UserModel from '../models/users.model';
+// import { Strategy as FacebookStrategy, Profile as ProfileFacebook } from 'passport-facebook';
+import UserModel, {IUser} from '../models/users.model';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
+import config from '../config/config';
+
+const JWT_SECRET = config.jwtSecret;
+
+
+export const verifyToken = (req: Request, res: Response, next: NextFunction): void => {
+    const authHeader = req.headers.authorization;
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+        jwt.verify(token, process.env.JWT_SECRET as string, (err, user) => {
+            if (err) {
+                return res.sendStatus(403);
+            }
+            req.user = user as string;
+            next();
+        });
+    } else {
+        res.sendStatus(401);
+    }
+};
+
+export const loginCallback = (req: Request & { user?: IUser }, res: Response): void => {
+    if (!req.user) {
+        res.status(401).send('Unauthorized');
+        return;
+    }
+
+    const user = req.user as IUser;
+    const token = jwt.sign({ id: user._id }, JWT_SECRET);
+    res.redirect(`http://localhost:3000/login/success?token=${token}`);
+};
 // Configuración de la autenticación con Google
 export const googleAuth = {
     passport: passport.use(

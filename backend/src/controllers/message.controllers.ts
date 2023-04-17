@@ -1,8 +1,22 @@
-import { Request, Response } from 'express'
-import { MessageModel } from "../models/message.model";
+import { Request, Response } from 'express';
+import { Types } from 'mongoose';
+import { MessageModel } from '../models/message.model';
+import { User } from '../models/users.model';
+
+interface IUser {
+    _id?: Types.ObjectId;
+}
+
 async function createMessage(req: Request, res: Response) {
     try {
-        const newMessage = new MessageModel(req.body);
+        const user = req.user as IUser;
+        if (!user?._id) {
+            throw new Error('User not authenticated');
+        }
+        const newMessage = new MessageModel({
+            ...req.body,
+            sender: user._id.toString(),
+        });
         const savedMessage = await newMessage.save();
         res.status(201).json(savedMessage);
     } catch (error) {
