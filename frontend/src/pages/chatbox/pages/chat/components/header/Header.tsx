@@ -7,6 +7,7 @@ import { HeaderOptions } from './HeaderOptions'
 
 const StyledHeader = styled.header`
   position: sticky;
+  z-index: 1;
   top:0;
   width:100%;
   height: clamp(4.625rem, 8vw,5rem);
@@ -21,6 +22,7 @@ const StyledHeader = styled.header`
     width: clamp(2rem, 2vw, 4rem) ;
     height: clamp(2rem, 2vw, 4rem) ;
   }
+  
 `
 
 const WrapperUserInfo = styled.div`
@@ -81,10 +83,10 @@ const WrapperSearchIcon = styled.div`
   cursor: pointer;
   margin-left: auto;
   padding-right: 2.5rem;
-  visibility: hidden;
+  display: none;
 
   @media screen and (min-width: 49.75rem) {
-    visibility: visible;
+    display: block;
   }
 `
 

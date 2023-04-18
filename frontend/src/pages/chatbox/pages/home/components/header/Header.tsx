@@ -17,6 +17,10 @@ const HeaderStyled = styled('header')`
     width: clamp(2rem, 2vw, 4rem) ;
     height: clamp(2rem, 2vw, 4rem) ;
   }
+
+  @media screen and (min-width: 49.75rem) {
+    height: clamp(4.625rem, 8vw,5rem);
+  }
 `
 const WrapperIconMenu = styled('button')`
   
