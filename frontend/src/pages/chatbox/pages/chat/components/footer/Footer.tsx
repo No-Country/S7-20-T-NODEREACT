@@ -8,7 +8,6 @@ const StyledFooter = styled.footer`
   position: sticky;
   bottom:0;
   width: 100%;
-  z-index: -1;
 
   @media screen and (min-width: 49.75rem) {
     padding: 0 1rem;

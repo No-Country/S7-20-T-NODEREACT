@@ -10,6 +10,11 @@ const ChatboxHomePageStyled = styled('div')`
   / 1fr;
   max-height: 100vh;
   position: relative;
+
+  @media screen and (min-width: 49.75rem) {
+    border-right: 2px solid #241624;
+    width: 440px;
+  }
 `
 
 const ChatboxHomePage = (): JSX.Element => {
