@@ -10,7 +10,7 @@ export class Message {
   @prop({ type: () => String, trim: true })
   content: string;
 
-  @prop({ ref: 'Chat'})
+  @prop({ ref:'Chat'})
   chat: Ref<Chat>;
 
   @prop({ type: () => Types.ObjectId, ref: () => User })

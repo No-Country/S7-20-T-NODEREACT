@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import { ChatModel } from "../models/chat.model";
 async function createChat(req: Request, res: Response) {
+
     try {
         const newChat = new ChatModel(req.body);
         const savedChat = await newChat.save();

@@ -10,16 +10,19 @@ interface IUser {
 async function createMessage(req: Request, res: Response) {
     try {
         const user = req.user as IUser;
-        if (!user?._id) {
+
+       
+        if (user._id) {
             throw new Error('User not authenticated');
         }
         const newMessage = new MessageModel({
             ...req.body,
-            sender: user._id.toString(),
+            sender: user._id!,
         });
         const savedMessage = await newMessage.save();
         res.status(201).json(savedMessage);
     } catch (error) {
+     
         res.status(400).json({ message: error });
     }
 }
