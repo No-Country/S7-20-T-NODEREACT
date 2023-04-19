@@ -7,6 +7,7 @@ export interface IUser extends Document {
     _id?: Types.ObjectId
     email: string;
     password: string;
+    __v?: number;
     comparePassword: (password: string) => Promise<Boolean>
 };
 @pre<User>('save', async function (next) {
@@ -28,7 +29,7 @@ export class User {
     @prop({ required: true, unique: true, lowercase: true, trim: true })
     email!: string;
 
-    @prop({ required: true })
+    @prop({ required: true})
     password!: string;
 
     @prop()
@@ -63,5 +64,4 @@ export class User {
 
 
 const UserModel = getModelForClass(User);
-
 export default UserModel;

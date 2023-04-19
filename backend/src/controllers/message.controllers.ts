@@ -11,7 +11,6 @@ async function createMessage(req: Request, res: Response) {
     try {
         const user = req.user as IUser;
 
-       
         if (user._id) {
             throw new Error('User not authenticated');
         }
@@ -29,7 +28,8 @@ async function createMessage(req: Request, res: Response) {
 
 async function getMessages(req: Request, res: Response) {
     try {
-        const messages = await MessageModel.find();
+        const { userId } = req.params
+        const messages = await MessageModel.find({ users: userId });
         res.json(messages);
     } catch (error) {
         res.status(500).json({ message: error });
@@ -37,9 +37,9 @@ async function getMessages(req: Request, res: Response) {
 }
 
 async function getMessage(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id, userId } = req.params;
     try {
-        const message = await MessageModel.findById(id);
+        const message = await MessageModel.findOne({id, users: userId});
         if (!message) {
             return res.status(404).json({ message: 'Message not found' });
         }

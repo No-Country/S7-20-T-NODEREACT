@@ -48,7 +48,11 @@ const signIn = async (
 
     const isMatch = await user.comparePassword(req.body.password);
     if (isMatch) {
-        return res.status(400).json({ token: createToken(user) });
+        user.toJSON = function () {
+            const { password, ...user } = this.toObject();
+            return user;
+        };
+        return res.status(200).json({ token: createToken(user), user });
     }
 
     return res.status(400).json({

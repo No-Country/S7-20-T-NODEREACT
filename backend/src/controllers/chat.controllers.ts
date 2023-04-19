@@ -13,7 +13,8 @@ async function createChat(req: Request, res: Response) {
 
 async function getChats(req: Request, res: Response) {
     try {
-        const chats = await ChatModel.find();
+        const {userId} = req.params
+        const chats = await ChatModel.find({users: userId});
         res.json(chats);
     } catch (error) {
         res.status(500).json({ message: error });
@@ -21,9 +22,9 @@ async function getChats(req: Request, res: Response) {
 }
 
 async function getChat(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id, userId } = req.params;
     try {
-        const chat = await ChatModel.findById(id);
+        const chat = await ChatModel.findOne({id, users: userId});
         if (!chat) {
             return res.status(404).json({ message: 'Chat not found' });
         }

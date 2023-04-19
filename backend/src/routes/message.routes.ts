@@ -7,10 +7,10 @@ const router = Router();
 router.use('/messages',verifyToken)
 router.use('/messages/:id',verifyToken)
 
-router.post('/messages', messageController.createMessage);
-router.get('/messages', messageController.getMessages);
-router.get('/messages/:id', messageController.getMessage);
-router.patch('/messages/:id', messageController.updateMessage);
-router.delete('/messages/:id', messageController.deleteMessage);
+router.post('/:userId/messages', messageController.createMessage);
+router.get('/:userId/messages', messageController.getMessages);
+router.get('/:userId/messages/:id', messageController.getMessage);
+router.patch('/:userId/messages/:id', messageController.updateMessage);
+router.delete('/:userId/messages/:id', messageController.deleteMessage);
 
 export default router;
