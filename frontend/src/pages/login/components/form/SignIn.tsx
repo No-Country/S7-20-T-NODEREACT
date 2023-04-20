@@ -110,7 +110,7 @@ const Heading = styled('h3')`
 `
 
 const SignIn = (): JSX.Element => {
-  const { setUser, signIn } = useAuth()
+  const { setUser, setUserID, setUserToken, signIn } = useAuth()
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -125,8 +125,10 @@ const SignIn = (): JSX.Element => {
   const handleFormSubmit = async (ev: React.FormEvent<HTMLFormElement>): Promise<void> => {
     try {
       ev.preventDefault()
-      const userCredentials = await signIn(form)
-      setUser(userCredentials)
+      const { token, user } = await signIn(form)
+      setUserID(user._id)
+      setUserToken(token)
+      setUser(user)
     } catch (error) {
       console.log(error.response.data.msg)
     }
