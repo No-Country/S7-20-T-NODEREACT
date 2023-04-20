@@ -59,7 +59,9 @@ const UserProvider = ({ children }: Props): JSX.Element => {
   }
 
   const signOut = (): void => {
-    console.log('sign out')
+    setUser(null)
+    removeUserID()
+    removeUserToken()
   }
 
   const [selectedChatId, setSelectedChatId] = useState<number | null>(null)

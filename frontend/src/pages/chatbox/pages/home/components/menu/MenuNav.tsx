@@ -1,5 +1,6 @@
-import { IconScheduleSend, IconHelp } from '@/components'
-import { IconAccountCircle, IconAddPerson, IconBell, IconBookmark, IconEditComment, IconGroupAdd, IconSetting } from '@/pages/chatbox/pages/home/components'
+import { IconHelp, IconScheduleSend } from '@/components'
+import { useAuth } from '@/hooks'
+import { IconAccountCircle, IconAddPerson, IconBell, IconBookmark, IconEditComment, IconGroupAdd, IconLogout, IconSetting } from '@/pages/chatbox/pages/home/components'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -23,28 +24,33 @@ const MenuNavLi = styled('li')`
   flex-flow: row nowrap;
   align-items: center;
   gap: clamp(1rem, 1vw, 2rem);
-  
+
   svg {
     fill: #281828;
     width: clamp(1.75rem, 1.75vw, 3.5rem);
     height: clamp(1.75rem, 1.75vw, 3.5rem);
     padding: clamp(0.125rem, 0.125vw, 0.25rem);
     border-radius: clamp(0.25rem, 0.25vw, 0.5rem);
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     transition: background-color 300ms;
     outline: clamp(0.125rem, 0.125vw, 0.25rem) solid #281828;
   }
-  
-  :hover{
-    color: #6D6BC5;
-    
+
+  :hover {
+    color: #6d6bc5;
+
     svg {
-      background-color: #8A89D1;
+      background-color: #8a89d1;
     }
   }
 `
+const ButtonSignOut = styled('button')`
+  font-weight: 700;
+`
 
 const MenuNav = (): JSX.Element => {
+  const { signOut } = useAuth()
+
   return (
     <MenuNavStyled>
       <MenuNavUl>
@@ -89,6 +95,10 @@ const MenuNav = (): JSX.Element => {
         <MenuNavLi>
           <IconSetting />
           <Link to='settings'>Ajustes</Link>
+        </MenuNavLi>
+        <MenuNavLi onClick={signOut}>
+          <IconLogout />
+          <ButtonSignOut>Cerrar sesión</ButtonSignOut>
         </MenuNavLi>
       </MenuNavUl>
     </MenuNavStyled>
