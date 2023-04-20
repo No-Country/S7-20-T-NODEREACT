@@ -73,4 +73,12 @@ Una aplicación de chat que permite a los usuarios comunicarse con otros usuario
      </a>
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <a href="https://www.behance.net/uirodriruiz"  >
+          <img width="300" src="https://mir-s3-cdn-cf.behance.net/user/230/04f7b28530477.5efcfab31d5ae.png" alt="uirodriruiz" />
+          <h2>Rodrigo Ruiz ( Diseñador UX/UI )</h2>
+     </a>
+    </td>
+  </tr>
 </table>
