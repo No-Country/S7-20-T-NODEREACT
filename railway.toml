@@ -1,14 +1,14 @@
 [[services]]
   internal_port = 8080
   name = "backend"
-  command = "npm run dev"
+  command = "npm start"
   dockerfile = """
     FROM node:18
     WORKDIR /src/app
     COPY . .
     RUN npm install
     EXPOSE 8080
-    CMD [ "npm", "run", "dev" ]
+    CMD [ "npm", "start" ]
   """
 
 [[services]]
