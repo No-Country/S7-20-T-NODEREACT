@@ -130,7 +130,7 @@ const SignIn = (): JSX.Element => {
       setUserToken(token)
       setUser(user)
     } catch (error) {
-      console.log(error.response.data.msg)
+      console.log(error)
     }
   }
 
