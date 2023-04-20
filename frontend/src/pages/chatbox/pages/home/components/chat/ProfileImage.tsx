@@ -9,7 +9,7 @@ const ChatPicture = styled('picture')`
   padding: clamp(0.125rem, 0.125vw, 0.25rem);
   position: relative;
 `
-const ChatPictureStatus = styled('span')<{ status: 'online' | 'offline' | 'deleted' }>`
+const ChatPictureStatus = styled('span') <{ status: 'online' | 'offline' | 'deleted' }>`
   position: absolute;
   top: 0;
   right: 0;
@@ -26,11 +26,14 @@ const ChatPictureStatus = styled('span')<{ status: 'online' | 'offline' | 'delet
     background-color: #FFFFFF;
   `}
 `
+interface Props {
+  imgUrl: string
+}
 
-const ProfileImage = (): JSX.Element => {
+const ProfileImage = ({ imgUrl }: Props): JSX.Element => {
   return (
     <ChatPicture>
-      <img src='https://s3-alpha-sig.figma.com/img/a339/5e70/440b48a236ef3499b537246b735e66b0?Expires=1681689600&Signature=UDUygl4LDxFYx0IKFRRGu6MbAsC-plbVm5gnJWmy2m0JTjfEmINPE1uDGyvi-ulXdexxo8dcRXjw8ELixRwRw56lA5Kxi2MIcfmY27neq6NzE3fhr45FYXPu7tl5nHiT1mD3JIAYh-CNA9m9TXwuI31H8vyLhAATpV5vPRaj5AIMn-ADNh9VUNFjuLfDE1fX1pssM7OX986VOgviGlVtvxggL~8tQ1iTKjZj-34Zp-GdD6fAZmRZ~zVjh2QntSG0exLrMtAjm5VqQctSAQSV616UXiHkuiCz2nXRmZgWLdVodzULQJTKb3T~eunr6U54bjUUIq~tDxMwXKvmttsVcA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4' alt='Imagen de perfil del contacto' />
+      <img src={imgUrl} alt='Imagen de perfil del contacto' />
       <ChatPictureStatus status='online' />
     </ChatPicture>
   )
