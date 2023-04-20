@@ -11,21 +11,21 @@ const HeaderStyled = styled('header')`
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
-  background-color: #C9DBDB;
+  background-color: #c9dbdb;
   padding: clamp(1rem, 1vw, 2rem) clamp(1rem, 5.75vw, 11.5rem);
   outline: 0.125rem solid #281828;
   z-index: 1;
 
   .header-btn {
-   @media screen and (max-width: 64rem) {
+    @media screen and (max-width: 64rem) {
       display: none;
-   }
+    }
   }
 `
 const WrapperIconMenu = styled('button')`
- @media screen and (min-width: 64rem) {
+  @media screen and (min-width: 64rem) {
     display: none;
- }
+  }
 `
 
 const Header = (): JSX.Element => {
@@ -38,8 +38,12 @@ const Header = (): JSX.Element => {
       <Overlay isActive={state} onClick={closeOverlay}>
         <NavMenu show={state} close={closeOverlayWithElement} />
       </Overlay>
-      <Button className='header-btn' to='/welcome' as={Link}>ABRIR CHATBOX</Button>
-      <WrapperIconMenu onClick={showOverlay}><IconMenu /></WrapperIconMenu>
+      <Button className='header-btn' to='/chatbox' as={Link}>
+        ABRIR CHATBOX
+      </Button>
+      <WrapperIconMenu onClick={showOverlay}>
+        <IconMenu />
+      </WrapperIconMenu>
     </HeaderStyled>
   )
 }
