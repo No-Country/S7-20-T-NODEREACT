@@ -1,5 +1,7 @@
 import { IconFacebook, IconGoogle, IconTwitter } from '@/components'
+import { useAuth } from '@/hooks'
 import { Button, HeadingWithDashed, HrWithDashed, SocialMedia } from '@/styled-components/components'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -19,14 +21,14 @@ const LabelStyled = styled('label')`
   font-weight: 900;
 `
 const InputStyled = styled('input')`
-  color: #6F646F;
+  color: #6f646f;
   font-size: clamp(0.75rem, 0.75vw, 1.5rem);
   font-weight: 500;
-  border: 0.125rem solid #6F646F;
+  border: 0.125rem solid #6f646f;
   border-radius: clamp(0.25rem, 0.25vw, 0.5rem);
   background-color: #dbe7e7;
   padding: clamp(1rem, 1vw, 2rem);
-  
+
   ::placeholder {
     color: inherit;
   }
@@ -41,7 +43,7 @@ const WrapperFormOptions = styled('div')`
   font-weight: 500;
 `
 const LabelRememberMe = styled('label')`
-  :hover{
+  :hover {
     color: #6d6bc5;
   }
 `
@@ -49,7 +51,7 @@ const LinkForgotPassword = styled(Link)`
   text-decoration: underline;
   margin: 0 0 0 auto;
 
-  :hover{
+  :hover {
     color: #6d6bc5;
   }
 `
@@ -59,16 +61,16 @@ const CheckboxStyled = styled('input')`
   position: relative;
 
   :checked {
-    ::after{
+    ::after {
       opacity: 1;
     }
-    ::before{
+    ::before {
       background-color: #281828;
     }
   }
 
-  ::after{
-    content: "";
+  ::after {
+    content: '';
     position: absolute;
     inset: 0;
     margin: auto;
@@ -80,12 +82,12 @@ const CheckboxStyled = styled('input')`
     opacity: 0;
     transition: opacity 200ms;
   }
-  ::before{
-    content: "";
+  ::before {
+    content: '';
     width: clamp(1.25rem, 1.25vw, 2.5rem);
     height: clamp(1.25rem, 1.25vw, 2.5rem);
     border-radius: clamp(0.25rem, 0.25vw, 0.5rem);
-    background-color: #6F646F;
+    background-color: #6f646f;
     transition: background-color 200ms;
   }
 `
@@ -108,18 +110,42 @@ const Heading = styled('h3')`
 `
 
 const SignIn = (): JSX.Element => {
+  const { setUser, signIn } = useAuth()
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  })
+
+  const handleInputChange = (ev: React.ChangeEvent<HTMLInputElement>): void => {
+    const name = ev.target.name
+    const value = ev.target.value
+    setForm((prevForm) => ({ ...prevForm, [name]: value }))
+  }
+
+  const handleFormSubmit = async (ev: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    try {
+      ev.preventDefault()
+      const userCredentials = await signIn(form)
+      setUser(userCredentials)
+    } catch (error) {
+      console.log(error.response.data.msg)
+    }
+  }
+
   return (
-    <SignInStyled>
+    <SignInStyled onSubmit={handleFormSubmit}>
       <HeadingWithDashed>
-        <HrWithDashed />INICIA SESIÓN<HrWithDashed />
+        <HrWithDashed />
+        INICIA SESIÓN
+        <HrWithDashed />
       </HeadingWithDashed>
       <WrapperFormControl>
         <LabelStyled htmlFor='email'>Email</LabelStyled>
-        <InputStyled id='email' name='email' type='email' placeholder='email@ejemplo.com' />
+        <InputStyled onChange={handleInputChange} value={form.email} id='email' name='email' type='email' placeholder='email@ejemplo.com' />
       </WrapperFormControl>
       <WrapperFormControl>
         <LabelStyled htmlFor='password'>Contraseña</LabelStyled>
-        <InputStyled id='password' name='password' type='password' placeholder='*********' />
+        <InputStyled onChange={handleInputChange} value={form.password} id='password' name='password' type='password' placeholder='*********' />
       </WrapperFormControl>
       <WrapperFormOptions>
         <CheckboxStyled type='checkbox' name='checkbox' id='checkbox' />
@@ -128,7 +154,8 @@ const SignIn = (): JSX.Element => {
       </WrapperFormOptions>
       <Button>INICIAR SESIÓN</Button>
       <HeadingWithDashed as='h3' isItalic>
-        <HrWithDashed />o también<HrWithDashed />
+        <HrWithDashed />o también
+        <HrWithDashed />
       </HeadingWithDashed>
       <SocialMedia>
         <IconFacebook />

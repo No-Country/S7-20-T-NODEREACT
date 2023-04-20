@@ -1,13 +1,16 @@
+import { IUserContext, UserCredentials } from '@/models'
 import { createContext } from 'react'
 
-interface UserContextType {
-  selectedChatId: string | null
-  handleSelectedChatId: (chatId: string | null) => void
-}
-
-const UserContext = createContext<UserContextType>({
-  selectedChatId: null,
-  handleSelectedChatId: function (): void {}
+const UserContext = createContext<IUserContext>({
+  user: false,
+  setUser: () => {},
+  signUp: () => {},
+  signIn: async (user: UserCredentials) => {},
+  signInWithGithub: () => {},
+  signInWithGoogle: () => {},
+  signOut: () => {},
+  handleSelectedChatId: (chatId) => {},
+  selectedChatId: null
 })
 
 export { UserContext }
