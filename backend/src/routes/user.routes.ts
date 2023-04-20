@@ -8,6 +8,6 @@ router.get('/', (req: Request, res: Response) => {
   });
 });
 
-router.get('/users/me', UserController.getUser);
+router.get('/users/:id', UserController.getUser);
 router.get('/users', UserController.getUsers);
 export { router };
