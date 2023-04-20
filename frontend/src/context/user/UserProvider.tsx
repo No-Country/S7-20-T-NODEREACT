@@ -1,4 +1,6 @@
 import { UserContext } from '@/context'
+import { User, UserCredentials } from '@/models'
+import axios from 'axios'
 import { useState } from 'react'
 
 interface Props {
@@ -6,14 +8,15 @@ interface Props {
 }
 
 const UserProvider = ({ children }: Props): JSX.Element => {
-  const [user, setUser] = useState<boolean | null>(false)
+  const [user, setUser] = useState<boolean | User | null>(false)
 
   const signUp = (): void => {
     console.log('sign up')
   }
 
-  const signIn = (): void => {
-    console.log('sign in')
+  const signIn = async (user: UserCredentials): Promise<any> => {
+    const { data } = await axios.post('http://localhost:8080/api/v1/signin', user)
+    return data
   }
 
   const signInWithGoogle = (): void => {
@@ -36,6 +39,7 @@ const UserProvider = ({ children }: Props): JSX.Element => {
 
   const data = {
     user,
+    setUser,
     signUp,
     signIn,
     signInWithGithub,
