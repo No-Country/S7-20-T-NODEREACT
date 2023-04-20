@@ -8,7 +8,7 @@ interface Props {
 }
 
 const UserProvider = ({ children }: Props): JSX.Element => {
-  const [user, setUser] = useState<boolean | User | null>(false)
+  const [user, setUser] = useState<boolean | User | null>(null)
 
   const signUp = (): void => {
     console.log('sign up')
