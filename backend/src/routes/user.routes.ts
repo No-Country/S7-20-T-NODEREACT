@@ -1,15 +1,13 @@
 import { Router, Request, Response } from 'express';
-
-export const router = Router()
+import { UserController } from '../controllers/users.controllers';
+const router = Router();
 
 router.get('/', (req: Request, res: Response) => {
   res.status(200).json({
-    msg: 'todo ok'
-  })
-})
+    msg: 'todo ok',
+  });
+});
 
-router.get('/ok', (req: Request, res: Response) => {
-  res.status(200).json({
-    msg: 'pruebas de nodemon'
-  })
-})
+router.get('/users/:id', UserController.getUser);
+router.get('/users', UserController.getUsers);
+export { router };

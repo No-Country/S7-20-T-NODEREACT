@@ -1,11 +1,14 @@
 import { IconArrowBack } from '@/components'
-import { IconMoreVert } from '@/pages/chatbox/pages/chat/components'
-import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { IconSearch } from '../../../home/components'
+import { UserContext } from '@/context'
+import { useContext } from 'react'
+import { HeaderOptions } from './HeaderOptions'
+import { chatsData } from '@/utils/ChatsData'
 
 const StyledHeader = styled.header`
   position: sticky;
+  z-index: 1;
   top:0;
   width:100%;
   height: clamp(4.625rem, 8vw,5rem);
@@ -20,6 +23,7 @@ const StyledHeader = styled.header`
     width: clamp(2rem, 2vw, 4rem) ;
     height: clamp(2rem, 2vw, 4rem) ;
   }
+  
 `
 
 const WrapperUserInfo = styled.div`
@@ -76,39 +80,51 @@ const UserStatusInAvatar = styled.div`
   border-radius: 4px;
 `
 
-const WrapperRightItems = styled.div`
+const WrapperSearchIcon = styled.div`
+  cursor: pointer;
   margin-left: auto;
   padding-right: 2.5rem;
-  visibility: hidden;
+  display: none;
 
   @media screen and (min-width: 49.75rem) {
-    visibility: visible;
+    display: block;
   }
 `
 
+const WrapperIcon = styled.div`
+  cursor: pointer;
+`
+
 const Header = (): JSX.Element => {
-  const senderData = { userName: 'Dan Abramov', userAvatar: 'https://bit.ly/dan-abramov', userIsWritting: true, userIsOnline: true }
+  const senderUser = useContext(UserContext)
+
+  const selectedChat = chatsData.find((chat) => chat.id === senderUser.selectedChatId)
+
+  const senderData = { userName: selectedChat?.userName, userAvatar: selectedChat?.image, userIsWritting: false, userIsOnline: selectedChat?.status === 'online' || false }
 
   const { userName, userAvatar, userIsWritting, userIsOnline } = senderData
+
+  const { handleSelectedChatId } = useContext(UserContext)
 
   return (
     <StyledHeader>
       <WrapperUserData>
-        <NavLink to='/'>
+        <WrapperIcon onClick={() => handleSelectedChatId(null)}>
           <IconArrowBack />
-        </NavLink>
-        <UserAvatarPlaceholder userAvatar={userAvatar}>
-          {userIsOnline && <UserStatusInAvatar />}
-        </UserAvatarPlaceholder>
+        </WrapperIcon>
+        {userAvatar !== undefined &&
+          <UserAvatarPlaceholder userAvatar={userAvatar}>
+            {userIsOnline && <UserStatusInAvatar />}
+          </UserAvatarPlaceholder>}
         <WrapperUserInfo>
           <UserName>{userName}</UserName>
           {userIsWritting && <UserStatus>escribiendo...</UserStatus>}
         </WrapperUserInfo>
       </WrapperUserData>
-      <WrapperRightItems>
+      <WrapperSearchIcon>
         <IconSearch />
-      </WrapperRightItems>
-      <IconMoreVert />
+      </WrapperSearchIcon>
+      <HeaderOptions />
     </StyledHeader>
   )
 }

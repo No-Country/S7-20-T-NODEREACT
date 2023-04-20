@@ -1,4 +1,5 @@
 import { Chat } from '@/pages/chatbox/pages/home/components'
+import { chatsData } from '@/utils/ChatsData'
 import styled from 'styled-components'
 
 const ListOfChat = styled('section')`
@@ -16,19 +17,9 @@ const ListOfChat = styled('section')`
 const Chats = (): JSX.Element => {
   return (
     <ListOfChat>
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
-      <Chat />
+      {chatsData.map(chat => (
+        <Chat key={chat.id} chatData={chat} />
+      ))}
     </ListOfChat>
   )
 }

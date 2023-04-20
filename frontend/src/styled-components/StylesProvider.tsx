@@ -14,7 +14,7 @@ const StylesProvider = createGlobalStyle`
     // COMPONENTS
     --i-component-one: #FFFFFF;
     // TYPOGRAPHY
-    --family-one: 'Roboto', sans-serif;
+    --family-one: 'Public Sans', sans-serif;
   }
   
   * {

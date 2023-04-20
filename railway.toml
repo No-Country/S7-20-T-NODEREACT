@@ -1,0 +1,25 @@
+[[services]]
+  internal_port = 8080
+  name = "backend"
+  command = "npm start"
+  dockerfile = """
+    FROM node:18
+    WORKDIR /src/app
+    COPY . .
+    RUN npm install
+    EXPOSE 8080
+    CMD [ "npm", "start" ]
+  """
+
+[[services]]
+  internal_port = 5173
+  name = "frontend"
+  command = "npm run dev"
+  dockerfile = """
+    FROM node:16
+    WORKDIR /src/app
+    COPY . .
+    RUN npm install
+    EXPOSE 5173
+    CMD [ "npm","run", "dev" ]
+  """

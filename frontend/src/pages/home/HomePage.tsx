@@ -1,7 +1,11 @@
+import { CallToAction, Features, Hero } from '@/pages/home/components'
+
 const HomePage = (): JSX.Element => {
   return (
     <main>
-      home page
+      <Hero />
+      <Features />
+      <CallToAction />
     </main>
   )
 }

@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 
 export const attributes = css`
-  [svg-box-shadow] {
+  [data-svg-bx=true] {
     width: clamp(2rem, 2vw, 4rem) ;
     height: clamp(2rem, 2vw, 4rem) ;
     fill: #281828;
