@@ -9,7 +9,7 @@ const ChatPicture = styled('picture')`
   padding: clamp(0.125rem, 0.125vw, 0.25rem);
   position: relative;
 `
-const ChatPictureStatus = styled('span') <{ status: 'online' | 'offline' | 'deleted' }>`
+const ChatPictureStatus = styled('span') <{ status: string }>`
   position: absolute;
   top: 0;
   right: 0;
@@ -28,13 +28,14 @@ const ChatPictureStatus = styled('span') <{ status: 'online' | 'offline' | 'dele
 `
 interface Props {
   imgUrl: string
+  status: string
 }
 
-const ProfileImage = ({ imgUrl }: Props): JSX.Element => {
+const ProfileImage = ({ imgUrl, status }: Props): JSX.Element => {
   return (
     <ChatPicture>
       <img src={imgUrl} alt='Imagen de perfil del contacto' />
-      <ChatPictureStatus status='online' />
+      <ChatPictureStatus status={status} />
     </ChatPicture>
   )
 }

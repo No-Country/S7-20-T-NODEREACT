@@ -62,6 +62,7 @@ const Chat = ({ chatData }: Props): JSX.Element => {
   const {
     id,
     userName, image,
+    status,
     lastMessageDate,
     lastMessage,
     unread
@@ -69,7 +70,7 @@ const Chat = ({ chatData }: Props): JSX.Element => {
 
   return (
     <ChatStyled onClick={() => handleSelectedChatId(id)}>
-      <ProfileImage imgUrl={image} />
+      <ProfileImage imgUrl={image} status={status} />
       <ChatHeader>
         <ChatHeaderName>{userName}</ChatHeaderName>
         <ChatHeaderDate>{lastMessageDate}</ChatHeaderDate>

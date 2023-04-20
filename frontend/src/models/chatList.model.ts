@@ -1,3 +1,5 @@
+import { Message } from './message.model'
+
 export interface ChatList {
   id: number
   userName: string
@@ -5,4 +7,6 @@ export interface ChatList {
   lastMessageDate: string
   lastMessage: string
   unread: number
+  status: string
+  messages?: Message[]
 }
