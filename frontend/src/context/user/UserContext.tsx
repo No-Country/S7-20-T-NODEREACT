@@ -1,10 +1,11 @@
-import { IUserContext } from '@/models'
+import { IUserContext, UserCredentials } from '@/models'
 import { createContext } from 'react'
 
 const UserContext = createContext<IUserContext>({
   user: false,
+  setUser: () => {},
   signUp: () => {},
-  signIn: () => {},
+  signIn: async (user: UserCredentials) => {},
   signInWithGithub: () => {},
   signInWithGoogle: () => {},
   signOut: () => {},
