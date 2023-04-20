@@ -27,7 +27,6 @@ const signUp = async (
 
     const newUser = new UserModel(req.body);
     await newUser.save();
-    console.log(newUser)
     return res.status(201).json(newUser);
 };
 

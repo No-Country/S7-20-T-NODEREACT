@@ -5,7 +5,7 @@
   "main": "backend/src/index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && node dist/index.js",
     "dev": "ts-node-dev --respawn src/index.ts"
   },
   "keywords": [],

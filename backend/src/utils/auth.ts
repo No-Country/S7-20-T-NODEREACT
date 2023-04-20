@@ -14,7 +14,7 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction): vo
     const authHeader = req.headers.authorization;
     if (authHeader) {
         const token = authHeader.split(' ')[1];
-        console.log(token)
+
         jwt.verify(token, process.env.JWT_SECRET as string, (err, user) => {
             if (err) {
                 return res.sendStatus(403);
@@ -35,7 +35,7 @@ export const loginCallback = (req: Request & { user?: IUser }, res: Response): v
 
     const user = req.user as IUser;
     const token = jwt.sign({ id: user._id }, JWT_SECRET);
-    res.redirect(`http://localhost:3000/login/success?token=${token}`);
+    res.redirect(`http://localhost:8080/signin/success?token=${token}`);
 };
 // Configuración de la autenticación con Google
 export const googleAuth = {

@@ -22,7 +22,7 @@ router.get('/auth/github/callback', passport.authenticate('github', { failureRed
 
     const user = req.user as IUser;
     const token = jwt.sign({ id: user._id }, JWT_SECRET);
-    res.redirect(`http://localhost:3000/login/success?token=${token}`);
+    res.redirect(`http://localhost:8080/login/success?token=${token}`);
 });
 router.get('/auth/google', googleAuth.passport.authenticate('google', { scope: ['profile', 'email'] }));
 
