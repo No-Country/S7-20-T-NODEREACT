@@ -92,7 +92,7 @@ const Footer = (): JSX.Element => {
       <WrapperFooterItems show={showAttachOptions}>
         <WrapperMainOptions>
           <IconAddReaction />
-          <StyledInput type='text' placeholder='Enviar mensaje a Dan' />
+          <StyledInput type='text' placeholder='Enviar mensaje' />
           <IconActionWrapper onClick={handleAttachClick}>
             <IconAttachFileAdd />
           </IconActionWrapper>

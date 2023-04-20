@@ -4,6 +4,7 @@ import { IconSearch } from '../../../home/components'
 import { UserContext } from '@/context'
 import { useContext } from 'react'
 import { HeaderOptions } from './HeaderOptions'
+import { chatsData } from '@/utils/ChatsData'
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -95,7 +96,11 @@ const WrapperIcon = styled.div`
 `
 
 const Header = (): JSX.Element => {
-  const senderData = { userName: 'Dan Abramov', userAvatar: 'https://bit.ly/dan-abramov', userIsWritting: true, userIsOnline: true }
+  const senderUser = useContext(UserContext)
+
+  const selectedChat = chatsData.find((chat) => chat.id === senderUser.selectedChatId)
+
+  const senderData = { userName: selectedChat?.userName, userAvatar: selectedChat?.image, userIsWritting: false, userIsOnline: selectedChat?.status === 'online' || false }
 
   const { userName, userAvatar, userIsWritting, userIsOnline } = senderData
 
@@ -107,9 +112,10 @@ const Header = (): JSX.Element => {
         <WrapperIcon onClick={() => handleSelectedChatId(null)}>
           <IconArrowBack />
         </WrapperIcon>
-        <UserAvatarPlaceholder userAvatar={userAvatar}>
-          {userIsOnline && <UserStatusInAvatar />}
-        </UserAvatarPlaceholder>
+        {userAvatar !== undefined &&
+          <UserAvatarPlaceholder userAvatar={userAvatar}>
+            {userIsOnline && <UserStatusInAvatar />}
+          </UserAvatarPlaceholder>}
         <WrapperUserInfo>
           <UserName>{userName}</UserName>
           {userIsWritting && <UserStatus>escribiendo...</UserStatus>}
