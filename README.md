@@ -3,12 +3,16 @@
 # **📑GUÍA**
 
 <ol>
-     <li><a href="#imagenes">Imágenes</a></li>
      <li><a href="#demo">Demo</a></li>
+     <li><a href="#imagenes">Imágenes</a></li>
      <li><a href="#sobre-el-proyecto">Sobre el proyecto</a></li>
      <li><a href="#tecnologias-usadas">Tecnologias usadas</a></li>
      <li><a href="#colaboradores">Colaboradores</a></li>
 </ol>
+
+# **🚀DEMO**
+
+[https://lucky-brick-production.up.railway.app/](https://lucky-brick-production.up.railway.app/)
 
 # **📸IMAGENES**
 
@@ -20,10 +24,6 @@
 ![](https://res.cloudinary.com/dos3i5jqy/image/upload/v1682024453/layers/chatbox/chatbox6_rtwrgg.jpg)
 ![](https://res.cloudinary.com/dos3i5jqy/image/upload/v1682024453/layers/chatbox/chatbox7_cgqvib.jpg)
 
-# **🚀DEMO**
-
-[https://lucky-brick-production.up.railway.app/](https://lucky-brick-production.up.railway.app/)
-
 # **💬SOBRE EL PROYECTO**
 
 Una aplicación de chat que permite a los usuarios comunicarse con otros usuarios mediante mensajes de texto donde los usuarios pueden crear una cuenta ,cambiar sus ajustes y preferencias.
@@ -32,7 +32,7 @@ Una aplicación de chat que permite a los usuarios comunicarse con otros usuario
 
 > ### **💅 Front End**
 >
-> Se uso ViteJs como framework de desarollo, React Typescript para el desarrollo de interfaces, Styled Components para el desarrollo de estilos, Context API para el manejo y gestión de estados, React Router Dom para enrutamiento del proyecto, TS Standard como linter de código, NPM para la gestión de paquetes, Git para el control de versiones y Github para hospedar el código del proyecto..
+> Se uso `ViteJs` como framework de desarollo, `React Typescript` para el desarrollo de interfaces, `Styled Components` para el desarrollo de estilos, `Context API` para el manejo y gestión de estados, `React Router Dom` para enrutamiento del proyecto, `TS Standard` como linter de código, `NPM` para la gestión de paquetes, `Git` para el control de versiones y `Github` para hospedar el código del proyecto.
 
 > ### **💻 Back End**
 >
