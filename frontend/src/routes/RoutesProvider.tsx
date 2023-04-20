@@ -1,4 +1,5 @@
 import { ChatboxNewMessagePage, ChatboxPage, ErrorPage, FaqsPage, FeaturesPage, HomePage, LayoutPages, LoginPage, PrivacyPage, RegisterPage, WelcomePage } from '@/pages'
+import { UserRouteProtected, UserRouteRedirect } from '@/routes/user'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 const RoutesProvider = (): JSX.Element => {
@@ -12,12 +13,16 @@ const RoutesProvider = (): JSX.Element => {
           <Route path='privacy' element={<PrivacyPage />} />
           <Route path='*' element={<ErrorPage />} />
         </Route>
-        <Route path='/chatbox' element={<ChatboxPage />} />
-        <Route path='/chatbox/chat/:chat' element={<ChatboxPage />} />
-        <Route path='/chatbox/new-message' element={<ChatboxNewMessagePage />} />
-        <Route path='/welcome' element={<WelcomePage />} />
-        <Route path='/register' element={<RegisterPage />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route element={<UserRouteProtected />}>
+          <Route path='/chatbox' element={<ChatboxPage />} />
+          <Route path='/chatbox/chat/:chat' element={<ChatboxPage />} />
+          <Route path='/chatbox/new-message' element={<ChatboxNewMessagePage />} />
+        </Route>
+        <Route element={<UserRouteRedirect />}>
+          <Route path='/welcome' element={<WelcomePage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/login' element={<LoginPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )
