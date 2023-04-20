@@ -38,7 +38,7 @@ const UserProvider = ({ children }: Props): JSX.Element => {
   }
 
   const getUser = async (userID: string): Promise<any> => {
-    return await axios.get(`http://localhost:8080/api/v1/users/${userID}`)
+    return await axios.get(`${import.meta.env.VITE_API_URL}/users/${userID}`)
   }
 
   const signUp = (): void => {
@@ -46,7 +46,7 @@ const UserProvider = ({ children }: Props): JSX.Element => {
   }
 
   const signIn = async (user: UserCredentials): Promise<any> => {
-    const { data } = await axios.post('http://localhost:8080/api/v1/signin', user)
+    const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/signin`, user)
     return data
   }
 
