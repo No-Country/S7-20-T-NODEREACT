@@ -31,9 +31,9 @@ const UserProvider = ({ children }: Props): JSX.Element => {
     console.log('sign out')
   }
 
-  const [selectedChatId, setSelectedChatId] = useState<string | null>(null)
+  const [selectedChatId, setSelectedChatId] = useState<number | null>(null)
 
-  const handleSelectedChatId = (chatId: string | null): void => {
+  const handleSelectedChatId = (chatId: number | null): void => {
     setSelectedChatId(chatId)
   }
 

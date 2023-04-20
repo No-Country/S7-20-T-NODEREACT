@@ -1,4 +1,5 @@
 import { UserContext } from '@/context'
+import { ChatList } from '@/models/chatList.model'
 import { ProfileImage } from '@/pages/chatbox/pages/home/components'
 import { useContext } from 'react'
 import styled from 'styled-components'
@@ -51,19 +52,31 @@ const ChatFooterBadge = styled('span')`
   padding: clamp(0.125rem, 0.125vw, 0.25rem) clamp(0.375rem, 0.375vw, 0.75rem);
 `
 
-const Chat = (): JSX.Element => {
+interface Props {
+  chatData: ChatList
+}
+
+const Chat = ({ chatData }: Props): JSX.Element => {
   const { handleSelectedChatId } = useContext(UserContext)
 
+  const {
+    id,
+    userName, image,
+    lastMessageDate,
+    lastMessage,
+    unread
+  } = chatData
+
   return (
-    <ChatStyled onClick={() => handleSelectedChatId('12')}>
-      <ProfileImage />
+    <ChatStyled onClick={() => handleSelectedChatId(id)}>
+      <ProfileImage imgUrl={image} />
       <ChatHeader>
-        <ChatHeaderName>Carla Matos</ChatHeaderName>
-        <ChatHeaderDate>12:30</ChatHeaderDate>
+        <ChatHeaderName>{userName}</ChatHeaderName>
+        <ChatHeaderDate>{lastMessageDate}</ChatHeaderDate>
       </ChatHeader>
       <ChatFooter>
-        <ChatFooterMessage>ejemplo de mensaje de texto para app de chat box</ChatFooterMessage>
-        <ChatFooterBadge>4</ChatFooterBadge>
+        <ChatFooterMessage>{lastMessage}</ChatFooterMessage>
+        {unread >= 1 && <ChatFooterBadge>{unread}</ChatFooterBadge>}
       </ChatFooter>
     </ChatStyled>
   )

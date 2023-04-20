@@ -46,7 +46,7 @@ const WrapperIconQrCode = styled('button')`
 const MenuUser = (): JSX.Element => {
   return (
     <MenuUserStyled>
-      <MenuImage data-bx src='https://s3-alpha-sig.figma.com/img/a339/5e70/440b48a236ef3499b537246b735e66b0?Expires=1681689600&Signature=UDUygl4LDxFYx0IKFRRGu6MbAsC-plbVm5gnJWmy2m0JTjfEmINPE1uDGyvi-ulXdexxo8dcRXjw8ELixRwRw56lA5Kxi2MIcfmY27neq6NzE3fhr45FYXPu7tl5nHiT1mD3JIAYh-CNA9m9TXwuI31H8vyLhAATpV5vPRaj5AIMn-ADNh9VUNFjuLfDE1fX1pssM7OX986VOgviGlVtvxggL~8tQ1iTKjZj-34Zp-GdD6fAZmRZ~zVjh2QntSG0exLrMtAjm5VqQctSAQSV616UXiHkuiCz2nXRmZgWLdVodzULQJTKb3T~eunr6U54bjUUIq~tDxMwXKvmttsVcA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4' alt='Imagen de perfil del usuario' />
+      <MenuImage data-bx src='https://randomuser.me/api/portraits/men/52.jpg' alt='Imagen de perfil del usuario' />
       <MenuName>Juan Perez</MenuName>
       <MenuEmail>davidmedev@gmail.com</MenuEmail>
       <WrapperIconQrCode><IconQrCode /></WrapperIconQrCode>

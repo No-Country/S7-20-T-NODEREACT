@@ -8,6 +8,6 @@ export interface IUserContext {
   signInWithGithub: () => void
   signInWithGoogle: () => void
   signOut: () => void
-  selectedChatId: string | null
-  handleSelectedChatId: (chatId: string | null) => void
+  selectedChatId: number | null
+  handleSelectedChatId: (chatId: number | null) => void
 }
