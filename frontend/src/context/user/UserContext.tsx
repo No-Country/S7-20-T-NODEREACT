@@ -2,7 +2,7 @@ import { IUserContext, UserCredentials } from '@/models'
 import { createContext } from 'react'
 
 const UserContext = createContext<IUserContext>({
-  user: false,
+  user: { id: '', firstName: '', lastName: '', email: '', password: '' },
   setUser: () => {},
   setUserID: (id) => {},
   removeUserID: () => {},

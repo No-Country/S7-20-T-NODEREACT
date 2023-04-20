@@ -1,3 +1,4 @@
+import { useAuth } from '@/hooks'
 import { IconQrCode } from '@/pages/chatbox/pages/home/components'
 import styled from 'styled-components'
 
@@ -5,11 +6,11 @@ const MenuUserStyled = styled('section')`
   display: grid;
   justify-items: center;
   align-items: center;
-  gap: clamp(.5rem, .5vw, 1rem) clamp(1rem, 1vw, 2rem);
-  grid-template: 
-  "image name qrcode" auto
-  "image email qrcode" auto
-  / auto 1fr auto;
+  gap: clamp(0.5rem, 0.5vw, 1rem) clamp(1rem, 1vw, 2rem);
+  grid-template:
+    'image name qrcode' auto
+    'image email qrcode' auto
+    / auto 1fr auto;
   word-break: break-all;
 `
 const MenuImage = styled('img')`
@@ -29,7 +30,7 @@ const MenuEmail = styled('h4')`
   align-self: flex-start;
   justify-self: flex-start;
   grid-area: email;
-  color: #8F9B9B;
+  color: #8f9b9b;
   font-size: clamp(0.75rem, 0.75vw, 1.5rem);
   font-weight: 500;
 `
@@ -37,19 +38,29 @@ const WrapperIconQrCode = styled('button')`
   grid-area: qrcode;
 
   svg {
-    fill: #EAE8EA;
+    fill: #eae8ea;
     width: clamp(1.75rem, 1.75vw, 3.5rem);
-    background-color: #6D6BC5;
+    background-color: #6d6bc5;
   }
 `
 
 const MenuUser = (): JSX.Element => {
+  const { user } = useAuth()
+
+  const firstName = typeof user !== 'boolean' ? user?.firstName : 'test'
+  const lastName = typeof user !== 'boolean' ? user?.lastName : 'test'
+  const email = typeof user !== 'boolean' ? user?.email : 'test'
+
   return (
     <MenuUserStyled>
       <MenuImage data-bx src='https://randomuser.me/api/portraits/men/52.jpg' alt='Imagen de perfil del usuario' />
-      <MenuName>Juan Perez</MenuName>
-      <MenuEmail>davidmedev@gmail.com</MenuEmail>
-      <WrapperIconQrCode><IconQrCode /></WrapperIconQrCode>
+      <MenuName>
+        {firstName} {lastName}
+      </MenuName>
+      <MenuEmail>{email}</MenuEmail>
+      <WrapperIconQrCode>
+        <IconQrCode />
+      </WrapperIconQrCode>
     </MenuUserStyled>
   )
 }
